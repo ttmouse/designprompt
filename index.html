@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Ambient Light Background -->
+    <div class="ambient-light-container">
+        <div class="ambient-blob blob-primary"></div>
+        <div class="ambient-blob blob-secondary"></div>
+        <div class="ambient-blob blob-tertiary"></div>
+    </div>
+
     <!-- 固定的头部区域 -->
   <div class="header-wrapper">
     <header class="header">
@@ -29,11 +36,6 @@
                 <ul class="nav-list">
                     <li><a href="#principles" class="nav-link">设计原则</a></li>
                     <li><a href="#style-templates" class="nav-link">风格模板</a></li>
-                    <li>
-                        <button id="theme-toggle" class="nav-link" aria-label="切换主题" style="border:none; cursor:pointer; font-size: 1.2rem; padding: var(--space-2); background: transparent;">
-                            ☀️
-                        </button>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -65,7 +67,7 @@
                             <h3 class="panel-title">风格缩略图</h3>
                         </div>
                         <p class="panel-description">
-                            直接把 designprompts.dev 的页面缩放进卡片，快速确认色彩、构图和 Prompt 语气。点击卡片右上角可以在新标签页打开原始页面。
+                            点击卡片去 designprompts.dev 复制提示词。
                         </p>
                     </header>
                     <div class="style-embed-grid" id="style-embed-grid">
@@ -207,65 +209,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Floating Prompt Bar (Fixed Bottom) -->
-    <div id="floating-prompt-bar" class="floating-prompt-bar"></div>
-
-    <!-- Modal Overlay -->
-    <div id="prompt-modal" class="modal-overlay hidden">
-        <div class="relative z-10 flex max-h-[85vh] w-[min(95vw,800px)] flex-col overflow-hidden rounded-2xl border border-white/10" style="background-color: rgb(10, 10, 10); box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.8) 0px 25px 50px -12px, rgba(139, 92, 246, 0.3) 0px 0px 100px -20px;">
-            <div class="pointer-events-none absolute inset-0 overflow-hidden">
-                <div class="-top-1/2 -right-1/2 absolute h-full w-full rounded-full opacity-20 blur-[100px]" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);"></div>
-            </div>
-            <div class="relative shrink-0 border-white/[0.06] border-b px-8 py-6">
-                <button id="modal-close-btn" aria-label="Close" class="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-lg text-white/40 transition-all hover:bg-white/5 hover:text-white" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-5 w-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-                </button>
-                <div class="pr-12">
-                    <h2 id="modal-title" class="mb-3 font-bold font-display text-2xl text-white tracking-tight">Modern Dark</h2>
-                    <p id="modal-desc" class="w-[85%] text-[15px] text-white/60 leading-relaxed">A cinematic, high-precision dark mode design featuring layered ambient lighting through animated gradient blobs, mouse-tracking spotlight effects, and meticulously crafted micro-interactions that feel like premium software.</p>
-                </div>
-            </div>
-            <div class="prompt-scrollbar relative flex-1 overflow-y-auto overscroll-contain">
-                <div class="p-6">
-                    <div class="mb-5 flex flex-wrap items-center gap-3">
-                        <div id="modal-theme-badge" class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-3.5 w-3.5 text-violet-400"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-                            <span class="font-medium text-white/70 text-xs">Dark Mode</span>
-                        </div>
-                        <div class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-type h-3.5 w-3.5 text-fuchsia-400"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" x2="15" y1="20" y2="20"></line><line x1="12" x2="12" y1="4" y2="20"></line></svg>
-                            <span class="font-medium text-white/70 text-xs">Sans-serif</span>
-                        </div>
-                        <div id="modal-char-count" class="ml-auto text-white/30 text-xs">-- characters</div>
-                    </div>
-                    <div class="overflow-hidden rounded-xl border border-white/[0.06]" style="background-color: rgb(17, 17, 17);">
-                        <div class="flex items-center justify-between border-white/[0.06] border-b bg-white/[0.02] px-4 py-2.5">
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-4 w-4 text-white/30"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
-                                <span class="font-mono text-white/40 text-xs">prompt.xml</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
-                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
-                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <pre id="modal-prompt-text" class="prompt-scrollbar max-h-[40vh] overflow-auto whitespace-pre-wrap font-mono text-[13px] text-white/80 leading-relaxed">这里是提示词</pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="relative flex shrink-0 items-center justify-between border-white/[0.06] border-t bg-white/[0.02] px-6 py-4">
-                <p class="text-white/30 text-xs">Press <kbd class="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-white/50">Esc</kbd> to close</p>
-                <button id="modal-copy-btn" class="flex items-center gap-2 rounded-lg px-5 py-2.5 font-medium text-sm transition-all duration-200 text-white hover:scale-105" type="button" style="background: linear-gradient(135deg, rgb(139, 92, 246) 0%, rgb(217, 70, 239) 100%); box-shadow: rgba(139, 92, 246, 0.4) 0px 4px 20px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy h-4 w-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                    Copy Prompt
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
