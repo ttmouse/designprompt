@@ -1,0 +1,283 @@
+{
+  "version": "0.1.0",
+  "updated": "2024-05-01",
+  "categories": [
+    {
+      "id": "composition",
+      "name": "构图 / 版式",
+      "description": "以双主体叙事和左右 60/40 杂志版式为核心，结合三分法与垂直街拍比例，建立具有强烈视觉层次的舞台。",
+      "layout": "hero-centered",
+      "highlights": [
+        "双主体叙事构图",
+        "主次分明的视觉层级",
+        "60/40 左右分栏版式",
+        "主视觉居中放置",
+        "大面积留白 + 三分法对齐"
+      ],
+      "modules": [
+        {
+          "title": "空间结构",
+          "items": [
+            "前景/中景/背景三层空间并保持纵向街拍比例",
+            "信息侧栏配合生活方式主画面，形成画面 + 信息区双栖结构",
+            "严格网格系统与居中主视觉结合，保持留白呼吸"
+          ]
+        },
+        {
+          "title": "叠加与拼贴",
+          "items": [
+            "重叠拼贴布局，辅助卡片压在主画面上",
+            "利用半透明色块承载文字说明，强化视觉焦点"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dynamic-bounds",
+      "name": "动态边界 / 区块分割",
+      "description": "通过手绘笔触、撕裂边缘与流体几何形成富有质感的区块分割，增强故事感。",
+      "layout": "stacked",
+      "highlights": [
+        "手绘笔触分割",
+        "手撕纸边效果",
+        "流体几何与有机曲线边界",
+        "半透明色块叠加",
+        "不规则遮罩"
+      ],
+      "modules": [
+        {
+          "title": "动感分隔",
+          "items": [
+            "采用锯齿撕裂/笔触作为图文之间的过渡层",
+            "流体几何作为区块之间的过场动画形态"
+          ]
+        },
+        {
+          "title": "遮罩手法",
+          "items": [
+            "不规则遮罩+透明度变化突出主角",
+            "半透明色块叠加文字标签，形成“生活方式 + 功能信息”对话感"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "color-system",
+      "name": "色彩 / 色卡",
+      "description": "限定色板、低饱和背景与高对比点缀色并存，提供专属色卡展示区与编码。",
+      "layout": "swatches",
+      "highlights": [
+        "高级中性色主导",
+        "点缀色强调",
+        "色卡展示区（圆/方色块）",
+        "带 HEX/Pantone 标注",
+        "同色系层次 + 暖冷对比"
+      ],
+      "modules": [
+        {
+          "title": "色板策略",
+          "items": [
+            "背景降低饱和度，主体提亮",
+            "底层低饱和 + 高对比细节作为强调",
+            "同色系递进层次，配光泽高光点"
+          ]
+        },
+        {
+          "title": "展示形式",
+          "items": [
+            "色卡区域展示圆/方色块与 HEX、Pantone 编码",
+            "暖冷对比色搭配标签化说明"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depth-texture",
+      "name": "层次感 / 质感",
+      "description": "多层叠加视觉搭配纸张材质、颗粒噪点与布料褶皱，创造真实而富层次的街拍氛围。",
+      "layout": "cards",
+      "highlights": [
+        "多层叠加视觉",
+        "柔和投影 + 景深虚化",
+        "纸张质感叠底",
+        "颗粒胶片噪点",
+        "材质对比（哑光 vs 光泽）"
+      ],
+      "modules": [
+        {
+          "title": "质感堆栈",
+          "items": [
+            "纸张纹理 + 细颗粒噪点作为背景层",
+            "磨砂雾面区域对比光泽高光点缀"
+          ]
+        },
+        {
+          "title": "景深处理",
+          "items": [
+            "轻微景深虚化让主角更突出",
+            "布料褶皱与光影强调材质真实度"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "info-structure",
+      "name": "信息结构 / 内容模块",
+      "description": "OOTD 分区、单品拆解、幽灵模特与悬浮卡片共同构成卡片化信息系统。",
+      "layout": "modules",
+      "highlights": [
+        "OOTD 信息模块",
+        "单品拆解区",
+        "幽灵模特展示",
+        "悬浮小卡片/标签",
+        "右侧工具栏信息流"
+      ],
+      "modules": [
+        {
+          "title": "信息模块",
+          "items": [
+            "卡片化区块搭配标签图标，说明单品材质/场景",
+            "悬浮小卡片和幽灵模特，突出重点搭配"
+          ]
+        },
+        {
+          "title": "标签系统",
+          "items": [
+            "情绪与场景标签 + 图标",
+            "右侧工具栏呈现尺寸、来源、收藏等工具信息"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typography",
+      "name": "文字排版 / 标题",
+      "description": "大字号英文标题叠加中文副题，配合竖/横排混排与半透明底条强化杂志感。",
+      "layout": "type-mix",
+      "highlights": [
+        "大字号主标题叠加",
+        "英文标题 + 中文副标题",
+        "高对比无衬线字体",
+        "竖排与横排混合",
+        "半透明文字底条"
+      ],
+      "modules": [
+        {
+          "title": "标题策略",
+          "items": [
+            "大号字母压在画面上制造层次",
+            "半透明底条承载主标题，副标题左对齐"
+          ]
+        },
+        {
+          "title": "文本细节",
+          "items": [
+            "左对齐信息栏 + 小字说明区",
+            "图标 + 文本标签作为导航提示"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mood",
+      "name": "氛围 / 视觉调性",
+      "description": "杂志编辑风格结合生活方式街拍与高端街头调性，营造年轻潮流的城市日常。",
+      "layout": "timeline",
+      "highlights": [
+        "杂志编辑风格",
+        "生活方式街拍",
+        "高端街头气质",
+        "城市日常氛围",
+        "年轻潮流感"
+      ],
+      "modules": [
+        {
+          "title": "叙事口吻",
+          "items": [
+            "轻纪实重风格：用生活瞬间讲潮流故事",
+            "配以情绪标签提醒场景（Brunch / Gallery Walk 等）"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "special-effects",
+      "name": "特殊视觉效果",
+      "description": "将偏移印刷、双重印刷、半色调与扫描感结合，制造复古但现代的实验感。",
+      "layout": "overlay",
+      "highlights": [
+        "偏移印刷感",
+        "双色/叠色丝网印刷",
+        "半色调网点",
+        "胶片黑边",
+        "局部模糊 + 清晰对比"
+      ],
+      "modules": [
+        {
+          "title": "印刷质感",
+          "items": [
+            "双色印刷 + 偏移叠色形成错位效果",
+            "半色调网点覆盖辅助图层"
+          ]
+        },
+        {
+          "title": "影像处理",
+          "items": [
+            "胶片黑边 + 模拟扫描噪点",
+            "局部模糊与锐化对比提升关注点"
+          ]
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "id": "street-editorial",
+      "title": "都市街拍 Editorial Prompt 套件",
+      "summary": "结合构图、色彩、信息模块与特效的整套 AI Prompt 骨架，强调生活方式街拍与高端街头氛围。",
+      "categoryRefs": [
+        "composition",
+        "color-system",
+        "info-structure",
+        "typography",
+        "special-effects"
+      ],
+      "pillars": [
+        {
+          "label": "视觉结构",
+          "items": [
+            "双主体叙事构图 + 60/40 杂志版式 + 居中主视觉",
+            "画面与右侧工具栏信息并行"
+          ]
+        },
+        {
+          "label": "色彩策略",
+          "items": [
+            "高级中性色底 + 暖冷对比强调",
+            "色卡区展示 HEX/Pantone"
+          ]
+        },
+        {
+          "label": "内容布局",
+          "items": [
+            "OOTD 模块 + 单品拆解卡片 + 幽灵模特",
+            "情绪/场景标签与图标提示"
+          ]
+        },
+        {
+          "label": "特效层",
+          "items": [
+            "偏移印刷 + 半色调网点 + 胶片黑边",
+            "局部模糊 vs 清晰对比塑造层次"
+          ]
+        }
+      ],
+      "prompt": [
+        "构图：twin-subject narrative, 60/40 split editorial layout, centered hero with lifestyle image + utility sidebar, generous negative space with layered collage + rule-of-thirds framing.",
+        "色彩：muted neutral base, accent warm/cool contrast, dedicated swatch strip with HEX labels, desaturated background with bright subject.",
+        "信息：OOTD module, item breakdown cards, ghost mannequin callouts, right-side toolbar info flow, icon + text mood tags.",
+        "质感与特效：paper texture base, matte vs glossy contrast, offset print misregistration, halftone dots, film frame edge, selective blur vs sharp detail."
+      ]
+    }
+  ]
+}

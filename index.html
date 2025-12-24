@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignPrompt - 把设计原则转换成 AI 可执行的提示词</title>
+    <link rel="canonical" href="https://designprompt.vercel.app/">
+    <meta property="og:url" content="https://designprompt.vercel.app">
+    <meta property="og:title" content="DesignPrompt - 把设计原则转换成 AI 可执行的提示词">
+    <meta property="og:description" content="把设计原则转换成 AI 可执行的提示词，让任何人都能让 AI 产出专业级 UI">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 固定的头部区域 -->
+  <div class="header-wrapper">
+    <header class="header">
+        <div class="container">
+            <!-- Logo在左侧 -->
+            <div class="header-logo">
+                <span class="logo-design">Design</span><span class="logo-prompt">Prompt</span>
+            </div>
+            <!-- 导航在右侧 -->
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li><a href="#principles" class="nav-link">设计原则</a></li>
+                    <li><a href="#style-templates" class="nav-link">风格模板</a></li>
+                    <li>
+                        <button id="theme-toggle" class="nav-link" aria-label="切换主题" style="border:none; cursor:pointer; font-size: 1.2rem; padding: var(--space-2); background: transparent;">
+                            ☀️
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+  </div>
+
+    <!-- 简介区域 -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-text">
+                把设计原则转换成 AI 可执行的提示词，让任何人都能让 AI 产出专业级 UI
+            </p>
+            <p class="hero-subtitle">
+                A design prompt system that turns core design principles into AI-ready style rules.
+            </p>
+        </div>
+    </section>
+
+    <main class="main">
+        <div class="container">
+
+                        <!-- 风格模板 -->
+            <section id="style-templates" class="section">
+  
+
+                <div class="style-embed-panel">
+                    <header class="style-embed-header">
+                        <div>
+                            <h3 class="panel-title">风格缩略图</h3>
+                        </div>
+                        <p class="panel-description">
+                            直接把 designprompts.dev 的页面缩放进卡片，快速确认色彩、构图和 Prompt 语气。点击卡片右上角可以在新标签页打开原始页面。
+                        </p>
+                    </header>
+                    <div class="style-embed-grid" id="style-embed-grid">
+                        <div class="framework-placeholder">正在加载外部预览...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 通用设计原则 -->
+            <section id="principles" class="section">
+                <h2 class="section-title">通用设计原则</h2>
+                <div class="principles-grid">
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">布局与视觉结构</h3>
+                        <p class="principle-desc">采用网格系统将界面元素进行合理分组，对齐一致，使复杂界面在视觉上显得简明。</p>
+                        <ul class="principle-points">
+                            <li>使用一致的栅格系统和间距规范</li>
+                            <li>将相关元素放在相近区域</li>
+                            <li>帮助用户快速理解内容结构</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">清晰的视觉层级</h3>
+                        <p class="principle-desc">界面应当具有明确的主次层级，让用户一眼看出最重要的信息。</p>
+                        <ul class="principle-points">
+                            <li>通过字体大小、粗细、颜色对比强调重点</li>
+                            <li>为标题、副标题、正文设定明确样式差异</li>
+                            <li>确保一百个清晰的页面胜过一个杂乱的页面</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">一致性与规范</h3>
+                        <p class="principle-desc">界面设计应遵循统一的规范，让用户在不同页面和组件间感到熟悉可靠。</p>
+                        <ul class="principle-points">
+                            <li>建立设计系统或样式指南</li>
+                            <li>保证相同功能的元素在视觉和交互上一致</li>
+                            <li>减少用户学习成本</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">易读性与排版</h3>
+                        <p class="principle-desc">文本内容应当易于阅读和扫描，选择清晰易辨认的字体排版。</p>
+                        <ul class="principle-points">
+                            <li>限制字体种类至2~3种</li>
+                            <li>确保正文至少16px字号和充足行高</li>
+                            <li>控制每行文字长度在40~75个字符</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">直观交互与即时反馈</h3>
+                        <p class="principle-desc">用户操作后，系统应及时给予清晰反馈，让用户了解当前状态。</p>
+                        <ul class="principle-points">
+                            <li>为交互元素设计显眼的悬停、按下状态</li>
+                            <li>提供加载提示和状态变化</li>
+                            <li>遵循"形式追随功能"原则</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">用户控制与容错</h3>
+                        <p class="principle-desc">让用户始终对界面和流程有掌控感，提供撤销和确认机制。</p>
+                        <ul class="principle-points">
+                            <li>提供明显的取消/后退途径</li>
+                            <li>对破坏性操作弹出确认对话</li>
+                            <li>预防错误胜于事后纠正</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">可访问性与包容性</h3>
+                        <p class="principle-desc">设计应照顾尽可能广泛的用户，包括不同能力、设备和环境的使用者。</p>
+                        <ul class="principle-points">
+                            <li>保证高对比度配色（至少4.5:1）</li>
+                            <li>支持键盘导航和屏幕阅读器</li>
+                            <li>预设明暗模式、高对比模式等</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">响应式与弹性设计</h3>
+                        <p class="principle-desc">现代网页需要在不同屏幕尺寸和设备上都保持良好体验。</p>
+                        <ul class="principle-points">
+                            <li>使用流式布局和弹性网格</li>
+                            <li>根据常见断点调整排版</li>
+                            <li>确保重要元素在小屏幕上也易于操作</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">渐进呈现与简化流程</h3>
+                        <p class="principle-desc">避免一次性把所有选项和信息堆给用户，分步引导、渐进呈现。</p>
+                        <ul class="principle-points">
+                            <li>将长流程拆解为多个步骤</li>
+                            <li>提供进度指引</li>
+                            <li>默认只显示关键信息</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">以用户目标为核心</h3>
+                        <p class="principle-desc">所有设计决策都应围绕帮助用户更高效地完成任务展开。</p>
+                        <ul class="principle-points">
+                            <li>专注于必要的本质功能</li>
+                            <li>去除任何不必要的负担</li>
+                            <li>好的设计尽可能少，即少即是多</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!-- Refactoring UI-->
+            <section id="refactoring-ui" class="section">
+                <h2 class="section-title">Refactoring UI 设计原则提炼</h2>
+                <div class="principles-grid"></div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                通过提炼通用设计原则与风格约束参数，并将其融入AI设计工作流，
+                我们能够让生成式AI始终遵循经过验证的设计准则。
+            </p>
+            <p class="footer-text">
+                AI在创造力与规则的框架内协同工作——既拥抱创新，亦不偏离设计的根本原则。
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Prompt Bar (Fixed Bottom) -->
+    <div id="floating-prompt-bar" class="floating-prompt-bar"></div>
+
+    <!-- Modal Overlay -->
+    <div id="prompt-modal" class="modal-overlay hidden">
+        <div class="relative z-10 flex max-h-[85vh] w-[min(95vw,800px)] flex-col overflow-hidden rounded-2xl border border-white/10" style="background-color: rgb(10, 10, 10); box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.8) 0px 25px 50px -12px, rgba(139, 92, 246, 0.3) 0px 0px 100px -20px;">
+            <div class="pointer-events-none absolute inset-0 overflow-hidden">
+                <div class="-top-1/2 -right-1/2 absolute h-full w-full rounded-full opacity-20 blur-[100px]" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);"></div>
+            </div>
+            <div class="relative shrink-0 border-white/[0.06] border-b px-8 py-6">
+                <button id="modal-close-btn" aria-label="Close" class="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-lg text-white/40 transition-all hover:bg-white/5 hover:text-white" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-5 w-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+                <div class="pr-12">
+                    <h2 id="modal-title" class="mb-3 font-bold font-display text-2xl text-white tracking-tight">Modern Dark</h2>
+                    <p id="modal-desc" class="w-[85%] text-[15px] text-white/60 leading-relaxed">A cinematic, high-precision dark mode design featuring layered ambient lighting through animated gradient blobs, mouse-tracking spotlight effects, and meticulously crafted micro-interactions that feel like premium software.</p>
+                </div>
+            </div>
+            <div class="prompt-scrollbar relative flex-1 overflow-y-auto overscroll-contain">
+                <div class="p-6">
+                    <div class="mb-5 flex flex-wrap items-center gap-3">
+                        <div id="modal-theme-badge" class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-3.5 w-3.5 text-violet-400"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                            <span class="font-medium text-white/70 text-xs">Dark Mode</span>
+                        </div>
+                        <div class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-type h-3.5 w-3.5 text-fuchsia-400"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" x2="15" y1="20" y2="20"></line><line x1="12" x2="12" y1="4" y2="20"></line></svg>
+                            <span class="font-medium text-white/70 text-xs">Sans-serif</span>
+                        </div>
+                        <div id="modal-char-count" class="ml-auto text-white/30 text-xs">-- characters</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-white/[0.06]" style="background-color: rgb(17, 17, 17);">
+                        <div class="flex items-center justify-between border-white/[0.06] border-b bg-white/[0.02] px-4 py-2.5">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-4 w-4 text-white/30"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                <span class="font-mono text-white/40 text-xs">prompt.xml</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
+                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
+                                <div class="h-2.5 w-2.5 rounded-full bg-white/10"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <pre id="modal-prompt-text" class="prompt-scrollbar max-h-[40vh] overflow-auto whitespace-pre-wrap font-mono text-[13px] text-white/80 leading-relaxed">这里是提示词</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex shrink-0 items-center justify-between border-white/[0.06] border-t bg-white/[0.02] px-6 py-4">
+                <p class="text-white/30 text-xs">Press <kbd class="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-white/50">Esc</kbd> to close</p>
+                <button id="modal-copy-btn" class="flex items-center gap-2 rounded-lg px-5 py-2.5 font-medium text-sm transition-all duration-200 text-white hover:scale-105" type="button" style="background: linear-gradient(135deg, rgb(139, 92, 246) 0%, rgb(217, 70, 239) 100%); box-shadow: rgba(139, 92, 246, 0.4) 0px 4px 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy h-4 w-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                    Copy Prompt
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

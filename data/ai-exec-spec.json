@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "source": "Refactoring UI - Book",
+  "url": "https://online.fliphtml5.com/uejlb/wnsd/",
+  "score_weights": {
+    "hierarchy": 0.2,
+    "layout_spacing": 0.15,
+    "typography": 0.2,
+    "color": 0.15,
+    "depth": 0.1,
+    "images": 0.1,
+    "finishing": 0.1
+  },
+  "categories": [
+    {
+      "id": "hierarchy",
+      "name": "视觉层级",
+      "rules": [
+        {"id": "focal_point_single", "type": "constraint", "description": "每个视图仅允许一个主操作焦点", "target": {"max_primary_actions": 1}, "severity": "high"},
+        {"id": "contrast_min", "type": "constraint", "description": "文本/背景对比度阈值", "target": {"min_contrast_ratio": 4.5}, "severity": "high"},
+        {"id": "de_emphasize_secondary", "type": "constraint", "description": "次要信息弱化呈现", "target": {"secondary_emphasis": "reduced"}, "severity": "medium"},
+        {"id": "separate_visual_doc_hierarchy", "type": "principle", "description": "视觉层级不等于文档结构"}
+      ]
+    },
+    {
+      "id": "layout_spacing",
+      "name": "布局与间距",
+      "rules": [
+        {"id": "base_grid", "type": "constraint", "description": "统一 8px 基准网格", "target": {"grid_unit_px": 8}, "severity": "high"},
+        {"id": "spacing_scale", "type": "constraint", "description": "标准间距刻度", "target": {"scale": [4,8,12,16,24,32]}, "severity": "medium"},
+        {"id": "ambiguous_spacing_forbidden", "type": "constraint", "description": "禁止模糊间距值", "target": {"allowed_units": [4,8,12,16,24,32]}, "severity": "high"},
+        {"id": "container_max_width", "type": "constraint", "description": "容器最大宽度", "target": {"max_width_px": 1200}, "severity": "low"}
+      ]
+    },
+    {
+      "id": "typography",
+      "name": "排版与可读性",
+      "rules": [
+        {"id": "base_font_size", "type": "constraint", "description": "正文基础字号", "target": {"min_px": 16}, "severity": "high"},
+        {"id": "line_height_range", "type": "constraint", "description": "行高范围", "target": {"min": 1.5, "max": 1.8}, "severity": "medium"},
+        {"id": "max_line_length", "type": "constraint", "description": "每行最大字符数", "target": {"min_chars": 40, "max_chars": 75}, "severity": "high"},
+        {"id": "link_color_optional", "type": "principle", "description": "链接不必强制使用颜色区分"}
+      ]
+    },
+    {
+      "id": "color",
+      "name": "颜色运用",
+      "rules": [
+        {"id": "use_hsl", "type": "principle", "description": "使用 HSL 进行色彩定义"},
+        {"id": "shades_defined", "type": "constraint", "description": "每个主色定义 7 个以上色阶", "target": {"min_shades": 7}, "severity": "medium"},
+        {"id": "accessibility_contrast", "type": "constraint", "description": "无障碍对比度要求", "target": {"min_contrast_ratio": 4.5}, "severity": "high"},
+        {"id": "no_grey_on_color_bg", "type": "constraint", "description": "彩色背景上禁止灰色文字", "target": {"allowed": false}, "severity": "high"}
+      ]
+    },
+    {
+      "id": "depth",
+      "name": "营造层次",
+      "rules": [
+        {"id": "light_source_consistent", "type": "principle", "description": "统一光源方向"},
+        {"id": "shadow_layers", "type": "constraint", "description": "阴影分层", "target": {"layers": ["umbra","penumbra"]}, "severity": "low"},
+        {"id": "elevation_levels", "type": "constraint", "description": "定义海拔层级", "target": {"levels": ["sm","md","lg"]}, "severity": "medium"}
+      ]
+    },
+    {
+      "id": "images",
+      "name": "图像处理",
+      "rules": [
+        {"id": "text_overlay_contrast", "type": "constraint", "description": "文本覆盖需保持一致对比度", "target": {"min_contrast_ratio": 4.5}, "severity": "high"},
+        {"id": "intended_size", "type": "principle", "description": "每个图像有预设尺寸"},
+        {"id": "user_upload_caution", "type": "principle", "description": "谨慎处理用户上传内容"}
+      ]
+    },
+    {
+      "id": "finishing",
+      "name": "收尾打磨",
+      "rules": [
+        {"id": "supercharge_defaults", "type": "principle", "description": "强化默认样式"},
+        {"id": "accent_borders", "type": "principle", "description": "用强调边框引入色彩"},
+        {"id": "reduce_borders", "type": "principle", "description": "减少边框使用"},
+        {"id": "empty_states", "type": "principle", "description": "提供空状态"}
+      ]
+    }
+  ],
+  "prompt_suite": {
+    "hierarchy": "Use clear visual hierarchy: single focal primary action; maintain contrast >=4.5; de-emphasize secondary info; separate visual and document hierarchy.",
+    "typography": "Typography: base size >=16px; line-height 1.5–1.8; max line 40–75 chars; link color optional.",
+    "layout_spacing": "Spacing: strict 8px grid; use scale [4,8,12,16,24,32]; avoid ambiguous spacing; container max 1200px.",
+    "color": "Color in HSL; per-color >=7 shades; text/background contrast >=4.5; forbid grey text on colored backgrounds.",
+    "depth": "Depth: consistent light source; two-part shadows; elevation levels sm|md|lg.",
+    "images": "Images: maintain text overlay contrast >=4.5; respect intended sizes; caution for user uploads.",
+    "finishing": "Finishing: supercharge defaults; use accent borders; reduce borders; include empty states."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "AI 核心质量门槛",
+  "description": "最少但关键的硬性约束，确保高频高质输出。",
+  "gates": [
+    {"id": "contrast_min", "desc": "文本/背景对比度 >= 4.5", "target": {"min_contrast_ratio": 4.5}},
+    {"id": "primary_focal_only", "desc": "每视图仅一个主操作焦点", "target": {"max_primary_actions": 1}},
+    {"id": "font_base_min", "desc": "正文基础字号 >= 16px", "target": {"min_px": 16}},
+    {"id": "line_height_range", "desc": "行高 1.5–1.8", "target": {"min": 1.5, "max": 1.8}},
+    {"id": "line_length_range", "desc": "每行 40–75 字符", "target": {"min_chars": 40, "max_chars": 75}},
+    {"id": "grid_unit", "desc": "严格 8px 基准网格", "target": {"grid_unit_px": 8}},
+    {"id": "no_ambiguous_spacing", "desc": "禁止非刻度间距值", "target": {"allowed_units": [4,8,12,16,24,32]}},
+    {"id": "no_grey_on_color_bg", "desc": "彩色背景上禁止灰色文字", "target": {"allowed": false}}
+  ],
+  "prompt": "Quality gates: contrast >=4.5; single primary focal; base size >=16px; line-height 1.5–1.8; line length 40–75; strict 8px grid; only spacing [4,8,12,16,24,32]; forbid grey text on colored BG."
+}

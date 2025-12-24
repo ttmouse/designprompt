@@ -1,0 +1,26 @@
+{
+  "name": "designprompt",
+  "version": "1.0.0",
+  "description": "DesignPrompt - 把设计原则转换成 AI 可执行的提示词",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 || python -m http.server 8000",
+    "build": "echo 'No build process needed - static files ready for deployment'",
+    "deploy": "vercel --prod",
+    "preview": "vercel"
+  },
+  "keywords": [
+    "design",
+    "ui",
+    "principles",
+    "ai",
+    "prompt",
+    "design-system"
+  ],
+  "author": "DesignPrompt",
+  "license": "MIT",
+  "homepage": "https://designprompt.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/design-principles.git"
+  }
+}

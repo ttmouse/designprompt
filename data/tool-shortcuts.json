@@ -1,0 +1,24 @@
+{
+  "version": "0.1.0",
+  "updated": "2024-05-01",
+  "tools": [
+    {
+      "id": "trae",
+      "name": "TRAE",
+      "description": "多场景 AI 工作台，集合设计提示、洞察与资产管理，可在一个界面里切换多模态工作流。",
+      "url": "https://www.trae.ai/",
+      "shortcut": "⌘ + 1",
+      "tags": ["多模态", "工作台", "AI"],
+      "notes": "用于整理设计提示词、生成灵感、查看交付物。"
+    },
+    {
+      "id": "codebuddy-cn",
+      "name": "CodeBuddy CN",
+      "description": "中文开发协作助理，提供代码生成、审查、调试建议，可直接复制结果到 IDE。",
+      "url": "https://codebuddy.cn/",
+      "shortcut": "⌘ + 2",
+      "tags": ["AI 辅助开发", "审查", "调试"],
+      "notes": "对接中文语境，方便快速巡视项目、生成脚本。"
+    }
+  ]
+}
