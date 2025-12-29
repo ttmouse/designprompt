@@ -1,20 +1,20 @@
 # SaaS Design System
 
-**风格ID**: saas
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: A bold, minimalist-modern visual system combining clean aesthetics with dynamic execution. Features signature Electric Blue gradients, sophisticated dual-font pairing (Calistoga + Inter), animated hero graphics, inverted contrast sections, and micro-interactions throughout. Professional yet design-forward—confidence without clutter.
+**Style ID**: saas
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: A bold, minimalist-modern visual system combining clean aesthetics with dynamic execution. Features signature Electric Blue gradients, sophisticated dual-font pairing (Calistoga + Inter), animated hero graphics, inverted contrast sections, and micro-interactions throughout. Professional yet design-forward—confidence without clutter.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

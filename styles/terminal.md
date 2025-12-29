@@ -1,20 +1,20 @@
 # Terminal Design System
 
-**风格ID**: terminal
-**模式**: Dark
-**字体类型**: Sans-serif
-**简短描述**: A raw, functional, and retro-futuristic command-line interface aesthetic. High contrast, monospaced precision, and blinking cursors.
+**Style ID**: terminal
+**Theme**: Dark
+**Typography**: Sans-serif
+**Short Description**: A raw, functional, and retro-futuristic command-line interface aesthetic. High contrast, monospaced precision, and blinking cursors.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

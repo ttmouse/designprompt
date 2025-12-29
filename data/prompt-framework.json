@@ -4,227 +4,227 @@
   "categories": [
     {
       "id": "composition",
-      "name": "构图 / 版式",
-      "description": "以双主体叙事和左右 60/40 杂志版式为核心，结合三分法与垂直街拍比例，建立具有强烈视觉层次的舞台。",
+      "name": "Composition / Layout",
+      "description": "Centered on dual-subject narrative and 60/40 magazine layout, combined with the rule of thirds and vertical street-style proportions, creating a stage with strong visual hierarchy.",
       "layout": "hero-centered",
       "highlights": [
-        "双主体叙事构图",
-        "主次分明的视觉层级",
-        "60/40 左右分栏版式",
-        "主视觉居中放置",
-        "大面积留白 + 三分法对齐"
+        "Dual-subject narrative composition",
+        "Clear primary and secondary visual hierarchy",
+        "60/40 left-right split layout",
+        "Centered hero visual",
+        "Generous white space + rule-of-thirds alignment"
       ],
       "modules": [
         {
-          "title": "空间结构",
+          "title": "Spatial Structure",
           "items": [
-            "前景/中景/背景三层空间并保持纵向街拍比例",
-            "信息侧栏配合生活方式主画面，形成画面 + 信息区双栖结构",
-            "严格网格系统与居中主视觉结合，保持留白呼吸"
+            "Foreground/midground/background three-layer space with vertical street-style proportions",
+            "Information sidebar paired with lifestyle main visual, forming a dual-purpose structure",
+            "Strict grid system combined with centered main visual, maintaining whitespace and 'breathing room'"
           ]
         },
         {
-          "title": "叠加与拼贴",
+          "title": "Overlay & Collage",
           "items": [
-            "重叠拼贴布局，辅助卡片压在主画面上",
-            "利用半透明色块承载文字说明，强化视觉焦点"
+            "Overlapping collage layout; auxiliary cards layered on the main visual",
+            "Utilize semi-transparent color blocks for text descriptions to enhance visual focus"
           ]
         }
       ]
     },
     {
       "id": "dynamic-bounds",
-      "name": "动态边界 / 区块分割",
-      "description": "通过手绘笔触、撕裂边缘与流体几何形成富有质感的区块分割，增强故事感。",
+      "name": "Dynamic Boundaries / Section Partitioning",
+      "description": "Achieve textured sectioning through hand-drawn strokes, torn edges, and fluid geometry, enhancing the sense of storytelling.",
       "layout": "stacked",
       "highlights": [
-        "手绘笔触分割",
-        "手撕纸边效果",
-        "流体几何与有机曲线边界",
-        "半透明色块叠加",
-        "不规则遮罩"
+        "Hand-drawn stroke partitioning",
+        "Torn paper edge effects",
+        "Fluid geometry and organic curved boundaries",
+        "Semi-transparent color block overlays",
+        "Irregular masking"
       ],
       "modules": [
         {
-          "title": "动感分隔",
+          "title": "Dynamic Separation",
           "items": [
-            "采用锯齿撕裂/笔触作为图文之间的过渡层",
-            "流体几何作为区块之间的过场动画形态"
+            "Use jagged tears/strokes as transition layers between images and text",
+            "Fluid geometry as 'scene transition' animation forms between blocks"
           ]
         },
         {
-          "title": "遮罩手法",
+          "title": "Masking Techniques",
           "items": [
-            "不规则遮罩+透明度变化突出主角",
-            "半透明色块叠加文字标签，形成“生活方式 + 功能信息”对话感"
+            "Irregular masking + transparency variations to highlight the subject",
+            "Semi-transparent color blocks overlaying text labels, creating a 'lifestyle + functional info' dialogue"
           ]
         }
       ]
     },
     {
       "id": "color-system",
-      "name": "色彩 / 色卡",
-      "description": "限定色板、低饱和背景与高对比点缀色并存，提供专属色卡展示区与编码。",
+      "name": "Color / Swatches",
+      "description": "Limited color palette, low-saturation backgrounds, and high-contrast accent colors coexist, featuring dedicated swatch display areas and codes.",
       "layout": "swatches",
       "highlights": [
-        "高级中性色主导",
-        "点缀色强调",
-        "色卡展示区（圆/方色块）",
-        "带 HEX/Pantone 标注",
-        "同色系层次 + 暖冷对比"
+        "Premium neutrals dominate",
+        "Accent color emphasis",
+        "Swatch display area (circular/square blocks)",
+        "Includes HEX/Pantone labels",
+        "Monochromatic layering + warm/cool contrast"
       ],
       "modules": [
         {
-          "title": "色板策略",
+          "title": "Palette Strategy",
           "items": [
-            "背景降低饱和度，主体提亮",
-            "底层低饱和 + 高对比细节作为强调",
-            "同色系递进层次，配光泽高光点"
+            "Background saturation reduced, subject brightened",
+            "Low-saturation base layer + high-contrast details as emphasis",
+            "Monochromatic progressive layers with glossy highlights"
           ]
         },
         {
-          "title": "展示形式",
+          "title": "Display Formats",
           "items": [
-            "色卡区域展示圆/方色块与 HEX、Pantone 编码",
-            "暖冷对比色搭配标签化说明"
+            "Swatch area displaying circular/square color blocks with HEX/Pantone codes",
+            "Warm/cool contrast colors paired with labeled descriptions"
           ]
         }
       ]
     },
     {
       "id": "depth-texture",
-      "name": "层次感 / 质感",
-      "description": "多层叠加视觉搭配纸张材质、颗粒噪点与布料褶皱，创造真实而富层次的街拍氛围。",
+      "name": "Depth / Texture",
+      "description": "Multi-layer visual pairing with paper textures, film grain, and fabric folds, creating an authentic and rich street-style atmosphere.",
       "layout": "cards",
       "highlights": [
-        "多层叠加视觉",
-        "柔和投影 + 景深虚化",
-        "纸张质感叠底",
-        "颗粒胶片噪点",
-        "材质对比（哑光 vs 光泽）"
+        "Multi-layer visual stack",
+        "Soft shadows + depth-of-field blur",
+        "Paper texture overlay",
+        "Film/analog grain",
+        "Texture contrast (matte vs. glossy)"
       ],
       "modules": [
         {
-          "title": "质感堆栈",
+          "title": "Texture Stack",
           "items": [
-            "纸张纹理 + 细颗粒噪点作为背景层",
-            "磨砂雾面区域对比光泽高光点缀"
+            "Paper texture + fine grain as the background layer",
+            "Matte frost areas vs. glossy highlight accents"
           ]
         },
         {
-          "title": "景深处理",
+          "title": "Depth Processing",
           "items": [
-            "轻微景深虚化让主角更突出",
-            "布料褶皱与光影强调材质真实度"
+            "Subtle depth-of-field blur to make the subject pop",
+            "Fabric folds and lighting emphasize material authenticity"
           ]
         }
       ]
     },
     {
       "id": "info-structure",
-      "name": "信息结构 / 内容模块",
-      "description": "OOTD 分区、单品拆解、幽灵模特与悬浮卡片共同构成卡片化信息系统。",
+      "name": "Info Structure / Content Modules",
+      "description": "OOTD partitioning, item breakdowns, ghost mannequins, and floating cards together form a card-based information system.",
       "layout": "modules",
       "highlights": [
-        "OOTD 信息模块",
-        "单品拆解区",
-        "幽灵模特展示",
-        "悬浮小卡片/标签",
-        "右侧工具栏信息流"
+        "OOTD information modules",
+        "Item breakdown section",
+        "Ghost mannequin displays",
+        "Floating small cards/labels",
+        "Right-side toolbar information flow"
       ],
       "modules": [
         {
-          "title": "信息模块",
+          "title": "Information Modules",
           "items": [
-            "卡片化区块搭配标签图标，说明单品材质/场景",
-            "悬浮小卡片和幽灵模特，突出重点搭配"
+            "Card-based blocks paired with label icons, describing item materials/scenarios",
+            "Floating small cards and ghost mannequins highlighting key pairings"
           ]
         },
         {
-          "title": "标签系统",
+          "title": "Label System",
           "items": [
-            "情绪与场景标签 + 图标",
-            "右侧工具栏呈现尺寸、来源、收藏等工具信息"
+            "Mood and scenario labels + icons",
+            "Right-side toolbar presenting size, source, favorites, and other tool info"
           ]
         }
       ]
     },
     {
       "id": "typography",
-      "name": "文字排版 / 标题",
-      "description": "大字号英文标题叠加中文副题，配合竖/横排混排与半透明底条强化杂志感。",
+      "name": "Typography / Headings",
+      "description": "Large English headings overlaid with Chinese subtitles, combined with vertical/horizontal mixed layouts and semi-transparent bars to enhance the magazine feel.",
       "layout": "type-mix",
       "highlights": [
-        "大字号主标题叠加",
-        "英文标题 + 中文副标题",
-        "高对比无衬线字体",
-        "竖排与横排混合",
-        "半透明文字底条"
+        "Oversized primary heading overlays",
+        "English headings + English subtitles",
+        "High-contrast sans-serif fonts",
+        "Vertical and horizontal mixing",
+        "Semi-transparent text bars"
       ],
       "modules": [
         {
-          "title": "标题策略",
+          "title": "Heading Strategy",
           "items": [
-            "大号字母压在画面上制造层次",
-            "半透明底条承载主标题，副标题左对齐"
+            "Oversized letters layered on the image to create depth",
+            "Semi-transparent bars carrying the main heading, with subtitles left-aligned"
           ]
         },
         {
-          "title": "文本细节",
+          "title": "Text Details",
           "items": [
-            "左对齐信息栏 + 小字说明区",
-            "图标 + 文本标签作为导航提示"
+            "Left-aligned information column + fine-print description area",
+            "Icons + text labels as navigation prompts"
           ]
         }
       ]
     },
     {
       "id": "mood",
-      "name": "氛围 / 视觉调性",
-      "description": "杂志编辑风格结合生活方式街拍与高端街头调性，营造年轻潮流的城市日常。",
+      "name": "Mood / Visual Tone",
+      "description": "Magazine editorial style combined with lifestyle street photography and premium urban vibes, creating a youthful, trendy city daily.",
       "layout": "timeline",
       "highlights": [
-        "杂志编辑风格",
-        "生活方式街拍",
-        "高端街头气质",
-        "城市日常氛围",
-        "年轻潮流感"
+        "Magazine editorial style",
+        "Lifestyle street photography",
+        "High-end street aesthetic",
+        "Urban daily atmosphere",
+        "Youthful, trendy vibe"
       ],
       "modules": [
         {
-          "title": "叙事口吻",
+          "title": "Narrative Tone",
           "items": [
-            "轻纪实重风格：用生活瞬间讲潮流故事",
-            "配以情绪标签提醒场景（Brunch / Gallery Walk 等）"
+            "Documentary-lite, style-heavy: telling street stories through lifestyle moments",
+            "Paired with mood labels to signpost scenarios (Brunch / Gallery Walk, etc.)"
           ]
         }
       ]
     },
     {
       "id": "special-effects",
-      "name": "特殊视觉效果",
-      "description": "将偏移印刷、双重印刷、半色调与扫描感结合，制造复古但现代的实验感。",
+      "name": "Special Visual Effects",
+      "description": "Combining offset printing, double-exposure, halftones, and scanline effects to create a retro-modern experimental feel.",
       "layout": "overlay",
       "highlights": [
-        "偏移印刷感",
-        "双色/叠色丝网印刷",
-        "半色调网点",
-        "胶片黑边",
-        "局部模糊 + 清晰对比"
+        "Offset print feel",
+        "Duo-tone/layered screen printing",
+        "Halftone patterns",
+        "Film edges (black bar)",
+        "Partial blur + sharp contrast"
       ],
       "modules": [
         {
-          "title": "印刷质感",
+          "title": "Print Texture",
           "items": [
-            "双色印刷 + 偏移叠色形成错位效果",
-            "半色调网点覆盖辅助图层"
+            "Duo-tone printing + offset layering creating a misregistration effect",
+            "Halftone patterns covering auxiliary layers"
           ]
         },
         {
-          "title": "影像处理",
+          "title": "Image Processing",
           "items": [
-            "胶片黑边 + 模拟扫描噪点",
-            "局部模糊与锐化对比提升关注点"
+            "Film borders + simulated scan noise",
+            "Partial blur vs. sharpening contrast to enhance focus points"
           ]
         }
       ]
@@ -233,8 +233,8 @@
   "collections": [
     {
       "id": "street-editorial",
-      "title": "都市街拍 Editorial Prompt 套件",
-      "summary": "结合构图、色彩、信息模块与特效的整套 AI Prompt 骨架，强调生活方式街拍与高端街头氛围。",
+      "title": "Urban Street Editorial Prompt Suite",
+      "summary": "A full AI Prompt framework combining composition, color, info modules, and effects, emphasizing lifestyle street photography and high-end street vibes.",
       "categoryRefs": [
         "composition",
         "color-system",
@@ -244,39 +244,39 @@
       ],
       "pillars": [
         {
-          "label": "视觉结构",
+          "label": "Visual Structure",
           "items": [
-            "双主体叙事构图 + 60/40 杂志版式 + 居中主视觉",
-            "画面与右侧工具栏信息并行"
+            "Dual-subject narrative composition + 60/40 magazine layout + centered main visual",
+            "Visual image parallel with right-side utility sidebar information"
           ]
         },
         {
-          "label": "色彩策略",
+          "label": "Color Strategy",
           "items": [
-            "高级中性色底 + 暖冷对比强调",
-            "色卡区展示 HEX/Pantone"
+            "Premium neutral base + warm/cool contrast emphasis",
+            "Swatch area displaying HEX/Pantone labels"
           ]
         },
         {
-          "label": "内容布局",
+          "label": "Content Layout",
           "items": [
-            "OOTD 模块 + 单品拆解卡片 + 幽灵模特",
-            "情绪/场景标签与图标提示"
+            "OOTD module + item breakdown cards + ghost mannequin",
+            "Mood/scenario labels and icon prompts"
           ]
         },
         {
-          "label": "特效层",
+          "label": "Effect Layers",
           "items": [
-            "偏移印刷 + 半色调网点 + 胶片黑边",
-            "局部模糊 vs 清晰对比塑造层次"
+            "Offset printing + halftones + film borders",
+            "Partial blur vs. sharp focus to create hierarchy"
           ]
         }
       ],
       "prompt": [
-        "构图：twin-subject narrative, 60/40 split editorial layout, centered hero with lifestyle image + utility sidebar, generous negative space with layered collage + rule-of-thirds framing.",
-        "色彩：muted neutral base, accent warm/cool contrast, dedicated swatch strip with HEX labels, desaturated background with bright subject.",
-        "信息：OOTD module, item breakdown cards, ghost mannequin callouts, right-side toolbar info flow, icon + text mood tags.",
-        "质感与特效：paper texture base, matte vs glossy contrast, offset print misregistration, halftone dots, film frame edge, selective blur vs sharp detail."
+        "Composition: twin-subject narrative, 60/40 split editorial layout, centered hero with lifestyle image + utility sidebar, generous negative space with layered collage + rule-of-thirds framing.",
+        "Color: muted neutral base, accent warm/cool contrast, dedicated swatch strip with HEX labels, desaturated background with bright subject.",
+        "Information: OOTD module, item breakdown cards, ghost mannequin callouts, right-side toolbar info flow, icon + text mood tags.",
+        "Texture & Effects: paper texture base, matte vs glossy contrast, offset print misregistration, halftone dots, film frame edge, selective blur vs sharp detail."
       ]
     }
   ]

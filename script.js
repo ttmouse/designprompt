@@ -1507,7 +1507,7 @@ style-guide:
       const launchBtn = document.createElement('button');
       launchBtn.className = 'tool-launch-btn';
       launchBtn.type = 'button';
-      launchBtn.textContent = '打开';
+      launchBtn.textContent = 'Open';
       if (tool.url) {
         launchBtn.dataset.url = tool.url;
         launchBtn.addEventListener('click', function () {
@@ -1517,7 +1517,7 @@ style-guide:
         });
       } else {
         launchBtn.disabled = true;
-        launchBtn.textContent = '未配置链接';
+        launchBtn.textContent = 'No Link';
         launchBtn.style.opacity = '0.5';
         launchBtn.style.cursor = 'not-allowed';
       }
@@ -1535,8 +1535,8 @@ style-guide:
       return designSystemMatch[1].trim();
     }
 
-    // Priority 2: Extract content from ## 设计系统提示词 section onwards
-    const headerMatch = markdown.match(/## 设计系统提示词[\s\S]*([\s\S]*)/i);
+    // Priority 2: Extract content from ## Design System Prompt (or ## 设计系统提示词) section onwards
+    const headerMatch = markdown.match(/## (Design System Prompt|设计系统提示词)[\s\S]*([\s\S]*)/i);
     if (headerMatch && headerMatch[0]) {
       return headerMatch[0].trim();
     }
@@ -1560,7 +1560,7 @@ style-guide:
     if (!Array.isArray(styles) || !styles.length) {
       const placeholder = document.createElement('div');
       placeholder.className = 'framework-placeholder';
-      placeholder.textContent = '等待添加外部风格链接';
+      placeholder.textContent = 'Waiting for external style links';
       grid.appendChild(placeholder);
       return;
     }
@@ -1574,7 +1574,7 @@ style-guide:
 
       const iframe = document.createElement('iframe');
       iframe.loading = 'lazy';
-      iframe.title = `${style.name} 风格预览`;
+      iframe.title = `${style.name} Style Preview`;
       iframe.src = style.url;
       iframe.setAttribute('aria-hidden', 'true');
       iframe.tabIndex = -1;
@@ -1594,7 +1594,7 @@ style-guide:
       const info = document.createElement('div');
       const title = document.createElement('h4');
       title.className = 'style-embed-title';
-      title.textContent = style.name || '未命名风格';
+      title.textContent = style.name || 'Untitled Style';
       info.appendChild(title);
 
       const themeText = document.createElement('p');
@@ -1625,7 +1625,7 @@ style-guide:
           // Fetch the markdown file
           const response = await fetch(`styles/${slug}.md`);
           if (!response.ok) {
-            throw new Error(`文件不存在: styles/${slug}.md`);
+            throw new Error(`File not found: styles/${slug}.md`);
           }
 
           const markdown = await response.text();
@@ -1634,7 +1634,7 @@ style-guide:
           const prompt = extractPromptFromMarkdown(markdown);
 
           if (!prompt) {
-            throw new Error('未找到设计系统提示词');
+            throw new Error('Design system prompt not found');
           }
 
           // Copy to clipboard
@@ -1651,7 +1651,7 @@ style-guide:
           }, 2000);
 
         } catch (err) {
-          console.error('复制失败:', err);
+          console.error('Copy failed:', err);
           btn.innerHTML = '<span>Failed</span>';
           btn.classList.add('error');
 

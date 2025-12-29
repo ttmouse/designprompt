@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignPrompt - 把设计原则转换成 AI 可执行的提示词</title>
+    <title>DesignPrompt - Turn Design Principles into AI Prompts</title>
     <link rel="canonical" href="https://designprompt.vercel.app/">
     <meta property="og:url" content="https://designprompt.vercel.app">
-    <meta property="og:title" content="DesignPrompt - 把设计原则转换成 AI 可执行的提示词">
-    <meta property="og:description" content="把设计原则转换成 AI 可执行的提示词，让任何人都能让 AI 产出专业级 UI">
+    <meta property="og:title" content="DesignPrompt - Turn Design Principles into AI Prompts">
+    <meta property="og:description" content="将设计原则转化为 AI 兼容的风格规则，使任何人都能制作专业级的用户界面。">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Ambient Light Background -->
     <div class="ambient-light-container">
@@ -23,30 +27,30 @@
         <div class="ambient-blob blob-tertiary"></div>
     </div>
 
-    <!-- 固定的头部区域 -->
-  <div class="header-wrapper">
-    <header class="header">
-        <div class="container">
-            <!-- Logo在左侧 -->
-            <div class="header-logo">
-                <span class="logo-design">Design</span><span class="logo-prompt">Prompt</span>
+    <!-- Fixed Header Area -->
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="container">
+                <!-- Logo on the left -->
+                <div class="header-logo">
+                    <span class="logo-design">Design</span><span class="logo-prompt">Prompt</span>
+                </div>
+                <!-- Navigation on the right -->
+                <nav class="navigation">
+                    <ul class="nav-list">
+                        <li><a href="#principles" class="nav-link">Principles</a></li>
+                        <li><a href="#style-templates" class="nav-link">Style Templates</a></li>
+                    </ul>
+                </nav>
             </div>
-            <!-- 导航在右侧 -->
-            <nav class="navigation">
-                <ul class="nav-list">
-                    <li><a href="#principles" class="nav-link">设计原则</a></li>
-                    <li><a href="#style-templates" class="nav-link">风格模板</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-  </div>
+        </header>
+    </div>
 
-    <!-- 简介区域 -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <p class="hero-text">
-                把设计原则转换成 AI 可执行的提示词，让任何人都能让 AI 产出专业级 UI
+                将设计原则转化为 AI 兼容的风格规则，使任何人都能制作专业级的用户界面。
             </p>
             <p class="hero-subtitle">
                 A design prompt system that turns core design principles into AI-ready style rules.
@@ -57,127 +61,136 @@
     <main class="main">
         <div class="container">
 
-                        <!-- 风格模板 -->
             <section id="style-templates" class="section">
-  
+
 
                 <div class="style-embed-panel">
                     <header class="style-embed-header">
                         <div>
-                            <h3 class="panel-title">风格缩略图</h3>
+                            <h3 class="panel-title">Style Thumbnails</h3>
                         </div>
                         <p class="panel-description">
-                            点击卡片去 designprompts.dev 复制提示词。
+                            Click a card to copy the prompt at designprompts.dev.
                         </p>
                     </header>
                     <div class="style-embed-grid" id="style-embed-grid">
-                        <div class="framework-placeholder">正在加载外部预览...</div>
+                        <div class="framework-placeholder">Loading external previews...</div>
                     </div>
                 </div>
             </section>
 
-            <!-- 通用设计原则 -->
+            <!-- General Design Principles -->
             <section id="principles" class="section">
-                <h2 class="section-title">通用设计原则</h2>
+                <h2 class="section-title">General Design Principles</h2>
                 <div class="principles-grid">
 
                     <div class="principle-card">
-                        <h3 class="principle-title">布局与视觉结构</h3>
-                        <p class="principle-desc">采用网格系统将界面元素进行合理分组，对齐一致，使复杂界面在视觉上显得简明。</p>
+                        <h3 class="principle-title">Layout & Visual Structure</h3>
+                        <p class="principle-desc">Use grid systems to logically group interface elements, ensuring
+                            consistent alignment so complex interfaces appear visually simple.</p>
                         <ul class="principle-points">
-                            <li>使用一致的栅格系统和间距规范</li>
-                            <li>将相关元素放在相近区域</li>
-                            <li>帮助用户快速理解内容结构</li>
+                            <li>Use consistent grid systems and spacing standards</li>
+                            <li>Group related elements in close proximity</li>
+                            <li>Help users quickly understand the content structure</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">清晰的视觉层级</h3>
-                        <p class="principle-desc">界面应当具有明确的主次层级，让用户一眼看出最重要的信息。</p>
+                        <h3 class="principle-title">Clear Visual Hierarchy</h3>
+                        <p class="principle-desc">Interfaces should have clear primary and secondary levels, allowing
+                            users to see the most important information at a glance.</p>
                         <ul class="principle-points">
-                            <li>通过字体大小、粗细、颜色对比强调重点</li>
-                            <li>为标题、副标题、正文设定明确样式差异</li>
-                            <li>确保一百个清晰的页面胜过一个杂乱的页面</li>
+                            <li>Emphasize focus through font size, weight, and color contrast</li>
+                            <li>Define clear style differences for titles, subtitles, and body text</li>
+                            <li>Ensure a hundred clear pages are better than one cluttered page</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">一致性与规范</h3>
-                        <p class="principle-desc">界面设计应遵循统一的规范，让用户在不同页面和组件间感到熟悉可靠。</p>
+                        <h3 class="principle-title">Consistency & Standards</h3>
+                        <p class="principle-desc">Interface design should follow uniform standards to make users feel
+                            familiar and reliable across different pages and components.</p>
                         <ul class="principle-points">
-                            <li>建立设计系统或样式指南</li>
-                            <li>保证相同功能的元素在视觉和交互上一致</li>
-                            <li>减少用户学习成本</li>
+                            <li>Establish a design system or style guide</li>
+                            <li>Ensure elements with the same function are visually and interactively consistent</li>
+                            <li>Reduce the cost of user learning</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">易读性与排版</h3>
-                        <p class="principle-desc">文本内容应当易于阅读和扫描，选择清晰易辨认的字体排版。</p>
+                        <h3 class="principle-title">Readability & Typography</h3>
+                        <p class="principle-desc">Text content should be easy to read and scan, using clear and
+                            distinguishable typography.</p>
                         <ul class="principle-points">
-                            <li>限制字体种类至2~3种</li>
-                            <li>确保正文至少16px字号和充足行高</li>
-                            <li>控制每行文字长度在40~75个字符</li>
+                            <li>Limit font varieties to 2-3 types</li>
+                            <li>Ensure body text is at least 16px with sufficient line height</li>
+                            <li>Control line length to 40-75 characters per line</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">直观交互与即时反馈</h3>
-                        <p class="principle-desc">用户操作后，系统应及时给予清晰反馈，让用户了解当前状态。</p>
+                        <h3 class="principle-title">Intuitive Interaction & Feedback</h3>
+                        <p class="principle-desc">After a user performs an action, the system should provide clear,
+                            timely feedback to inform the user of the current state.</p>
                         <ul class="principle-points">
-                            <li>为交互元素设计显眼的悬停、按下状态</li>
-                            <li>提供加载提示和状态变化</li>
-                            <li>遵循"形式追随功能"原则</li>
+                            <li>Design distinct hover and active states for interactive elements</li>
+                            <li>Provide loading prompts and status changes</li>
+                            <li>Follow the "form follows function" principle</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">用户控制与容错</h3>
-                        <p class="principle-desc">让用户始终对界面和流程有掌控感，提供撤销和确认机制。</p>
+                        <h3 class="principle-title">User Control & Error Tolerance</h3>
+                        <p class="principle-desc">Enable users to always feel in control of the interface and flow,
+                            providing undo and confirmation mechanisms.</p>
                         <ul class="principle-points">
-                            <li>提供明显的取消/后退途径</li>
-                            <li>对破坏性操作弹出确认对话</li>
-                            <li>预防错误胜于事后纠正</li>
+                            <li>Provide clear cancel/back paths</li>
+                            <li>Pop up confirmation dialogs for destructive operations</li>
+                            <li>Prevention of errors is better than correction after the fact</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">可访问性与包容性</h3>
-                        <p class="principle-desc">设计应照顾尽可能广泛的用户，包括不同能力、设备和环境的使用者。</p>
+                        <h3 class="principle-title">Accessibility & Inclusivity</h3>
+                        <p class="principle-desc">Design should cater to the widest possible range of users, including
+                            different abilities, devices, and environments.</p>
                         <ul class="principle-points">
-                            <li>保证高对比度配色（至少4.5:1）</li>
-                            <li>支持键盘导航和屏幕阅读器</li>
-                            <li>预设明暗模式、高对比模式等</li>
+                            <li>Ensure high-contrast color palettes (at least 4.5:1)</li>
+                            <li>Support keyboard navigation and screen readers</li>
+                            <li>Pre-set light/dark modes and high-contrast modes</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">响应式与弹性设计</h3>
-                        <p class="principle-desc">现代网页需要在不同屏幕尺寸和设备上都保持良好体验。</p>
+                        <h3 class="principle-title">Responsive & Flexible Design</h3>
+                        <p class="principle-desc">Modern websites need to maintain a good experience across different
+                            screen sizes and devices.</p>
                         <ul class="principle-points">
-                            <li>使用流式布局和弹性网格</li>
-                            <li>根据常见断点调整排版</li>
-                            <li>确保重要元素在小屏幕上也易于操作</li>
+                            <li>Use fluid layouts and flexible grids</li>
+                            <li>Adjust typography based on common breakpoints</li>
+                            <li>Ensure important elements are easy to operate even on small screens</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">渐进呈现与简化流程</h3>
-                        <p class="principle-desc">避免一次性把所有选项和信息堆给用户，分步引导、渐进呈现。</p>
+                        <h3 class="principle-title">Progressive Disclosure & Simplicity</h3>
+                        <p class="principle-desc">Avoid overwhelming users by presenting all options at once; use
+                            step-by-step guidance and progressive disclosure.</p>
                         <ul class="principle-points">
-                            <li>将长流程拆解为多个步骤</li>
-                            <li>提供进度指引</li>
-                            <li>默认只显示关键信息</li>
+                            <li>Break long processes into multiple steps</li>
+                            <li>Provide progress indicators</li>
+                            <li>Default to only showing critical information</li>
                         </ul>
                     </div>
 
                     <div class="principle-card">
-                        <h3 class="principle-title">以用户目标为核心</h3>
-                        <p class="principle-desc">所有设计决策都应围绕帮助用户更高效地完成任务展开。</p>
+                        <h3 class="principle-title">Focus on User Goals</h3>
+                        <p class="principle-desc">All design decisions should focus on helping users complete tasks more
+                            efficiently.</p>
                         <ul class="principle-points">
-                            <li>专注于必要的本质功能</li>
-                            <li>去除任何不必要的负担</li>
-                            <li>好的设计尽可能少，即少即是多</li>
+                            <li>Focus on essential, necessary functionality</li>
+                            <li>Remove any unnecessary burden</li>
+                            <li>Good design is as little design as possible—less is more</li>
                         </ul>
                     </div>
 
@@ -190,7 +203,7 @@
 
             <!-- Refactoring UI-->
             <section id="refactoring-ui" class="section">
-                <h2 class="section-title">Refactoring UI 设计原则提炼</h2>
+                <h2 class="section-title">Refactoring UI Principles</h2>
                 <div class="principles-grid"></div>
             </section>
 
@@ -201,15 +214,17 @@
     <footer class="footer">
         <div class="container">
             <p class="footer-text">
-                通过提炼通用设计原则与风格约束参数，并将其融入AI设计工作流，
-                我们能够让生成式AI始终遵循经过验证的设计准则。
+                By distilling general design principles and style constraint parameters into the AI design workflow,
+                we enable generative AI to consistently follow proven design guidelines.
             </p>
             <p class="footer-text">
-                AI在创造力与规则的框架内协同工作——既拥抱创新，亦不偏离设计的根本原则。
+                AI works collaboratively within the framework of creativity and rules—embracing innovation while
+                remaining anchored to core design principles.
             </p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>

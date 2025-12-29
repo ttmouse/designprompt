@@ -1,20 +1,20 @@
 # Bold Typography Design System
 
-**风格ID**: bold-typography
-**模式**: Dark
-**字体类型**: Sans-serif
-**简短描述**: Type-driven design that treats massive typography as the primary visual element. Ultra-large headlines, extreme contrast, and dramatic negative space create poster-like compositions where words become art.
+**Style ID**: bold-typography
+**Theme**: Dark
+**Typography**: Sans-serif
+**Short Description**: Type-driven design that treats massive typography as the primary visual element. Ultra-large headlines, extreme contrast, and dramatic negative space create poster-like compositions where words become art.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

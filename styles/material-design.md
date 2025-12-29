@@ -1,20 +1,20 @@
 # Material Design Design System
 
-**风格ID**: material-design
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: Playful, dynamic color extraction, pill-shaped buttons, and distinct elevation states. Based on Google's Material Design 3 with enhanced depth and micro-interactions.
+**Style ID**: material-design
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: Playful, dynamic color extraction, pill-shaped buttons, and distinct elevation states. Based on Google's Material Design 3 with enhanced depth and micro-interactions.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

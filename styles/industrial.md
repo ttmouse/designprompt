@@ -1,20 +1,20 @@
 # Industrial Design System
 
-**风格ID**: industrial
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: A high-fidelity industrial skeuomorphism aesthetic inspired by Dieter Rams and Teenage Engineering. Features tactile neumorphic elements, matte plastic surfaces, and safety-orange accents. Every component mimics physical hardware with realistic lighting, mechanical interactions, and manufacturing details like screws, vents, and LED indicators.
+**Style ID**: industrial
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: A high-fidelity industrial skeuomorphism aesthetic inspired by Dieter Rams and Teenage Engineering. Features tactile neumorphic elements, matte plastic surfaces, and safety-orange accents. Every component mimics physical hardware with realistic lighting, mechanical interactions, and manufacturing details like screws, vents, and LED indicators.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

@@ -1,20 +1,20 @@
 # Enterprise Design System
 
-**风格ID**: enterprise
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: Modern SaaS aesthetic balancing professionalism with approachability. Vibrant indigo/violet gradients, soft colored shadows, isometric depth, and clean geometric sans-serif typography.
+**Style ID**: enterprise
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: Modern SaaS aesthetic balancing professionalism with approachability. Vibrant indigo/violet gradients, soft colored shadows, isometric depth, and clean geometric sans-serif typography.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

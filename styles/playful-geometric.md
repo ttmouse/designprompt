@@ -1,20 +1,20 @@
 # Playful Geometric Design System
 
-**风格ID**: playful-geometric
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: A vibrant, high-energy aesthetic that combines a stable structural grid with whimsical geometric decorations. It relies on bright solid colors, simple primitive shapes (circles, triangles, squiggles), and tactile interactions to create a friendly, optimistic vibe reminiscent of modern Memphis design.
+**Style ID**: playful-geometric
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: A vibrant, high-energy aesthetic that combines a stable structural grid with whimsical geometric decorations. It relies on bright solid colors, simple primitive shapes (circles, triangles, squiggles), and tactile interactions to create a friendly, optimistic vibe reminiscent of modern Memphis design.
 
-## 适用场景
-- 待补充
+## Best For
+- TBD
 
-## 情感调性
-待补充
+## Emotional Tone
+TBD
 
-## 适用行业
-待补充
+## Industries
+TBD
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

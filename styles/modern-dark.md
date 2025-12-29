@@ -1,24 +1,24 @@
 # Modern Dark Design System
 
-**风格ID**: modern-dark
-**模式**: Dark
-**字体类型**: Sans-serif
-**简短描述**: A cinematic, high-precision dark mode design featuring layered ambient lighting through animated gradient blobs, mouse-tracking spotlight effects, and meticulously crafted micro-interactions that feel like premium software.
+**Style ID**: modern-dark
+**Theme**: Dark
+**Typography**: Sans-serif
+**Short Description**: A cinematic, high-precision dark mode design featuring layered ambient lighting through animated gradient blobs, mouse-tracking spotlight effects, and meticulously crafted micro-interactions that feel like premium software.
 
-## 适用场景
+## Best For
 - 开发工具平台
 - SaaS产品
 - 技术文档
 - 设计工具
 - 代码编辑器
 
-## 情感调性
+## Emotional Tone
 精准、深度、流畅、高级、技术感、电影感
 
-## 适用行业
+## Industries
 科技、软件开发、设计工具、开发者服务
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

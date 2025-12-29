@@ -15,13 +15,13 @@ styles/
 ## 已集成风格
 
 ### 1. Monochrome (monochrome.md)
-- **模式**: Light
+- **Theme**: Light
 - **字体**: Serif
 - **特点**: 纯黑白、极简、编辑风格
 - **适用**: 时尚、建筑、艺术、高端品牌
 
 ### 2. Bauhaus (bauhaus.md)
-- **模式**: Light
+- **Theme**: Light
 - **字体**: Sans-serif
 - **特点**: 几何图形、三原色、现代主义
 - **适用**: 创意机构、设计工作室、艺术教育

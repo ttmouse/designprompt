@@ -1,13 +1,13 @@
-/* 基础重置和全局样式 */
+/* Base reset and global styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* CSS自定义属性 - 设计令牌 (Design Tokens from design.md) */
+/* CSS Custom Properties - Design Tokens (Design Tokens from design.md) */
 :root {
-    /* 品牌字体 */
+    /* Brand Fonts */
     --font-family-brand: 'Inter', 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-family-primary: 'Inter', 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -40,7 +40,7 @@
     --border-hover: rgba(255, 255, 255, 0.10);
     --border-accent: rgba(94, 106, 210, 0.30);
 
-    /* 兼容旧变量名 (Mapping to existing semantic tokens) */
+    /* Legacy variable compatibility (Mapping to existing semantic tokens) */
     --color-primary: var(--accent);
     --color-primary-hover: var(--accent-bright);
     --color-white: #ffffff;
@@ -59,13 +59,13 @@
     --border-light: var(--border-default);
     --border-base: var(--border-default);
 
-    /* 字体系统 */
+    /* Typography Scale - Weight */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
-    /* 字号系统 */
+    /* Type Scale - Size */
     --font-size-xs: 0.75rem;
     /* 12px */
     --font-size-sm: 0.875rem;
@@ -89,7 +89,7 @@
     --font-size-7xl: 4.5rem;
     /* 72px */
 
-    /* 间距系统 - 4px基准 */
+    /* Spacing System - 4px Basis */
     --space-1: 0.25rem;
     /* 4px */
     --space-2: 0.5rem;
@@ -117,7 +117,7 @@
     --space-32: 8rem;
     /* 128px */
 
-    /* 圆角系统 */
+    /* Radius System */
     --radius-sm: 0.25rem;
     /* 4px */
     --radius-md: 0.5rem;
@@ -130,7 +130,7 @@
     /* 24px */
     --radius-full: 9999px;
 
-    /* 阴影系统 - Multi-layer */
+    /* Shadow System - Multi-layer */
     --shadow-card:
         0 0 0 1px var(--border-default),
         0 2px 20px rgba(0, 0, 0, 0.4),
@@ -155,24 +155,20 @@
     --shadow-md: var(--shadow-card);
     --shadow-lg: var(--shadow-card-hover);
 
-    /* 动画系统 */
+    /* Animation System */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: 200ms var(--ease-out-expo);
     --transition-normal: 300ms var(--ease-out-expo);
     --transition-slow: 600ms var(--ease-out-expo);
 
-    /* 容器最大宽度 */
+    /* Max Container Width */
     --container-max-width: 1200px;
     --container-padding: var(--space-6);
 }
 
-/* Remove old themes for now to enforce new design */
-[data-theme="dark"],
-[data-theme="warm"] {
-    /* Reset to root values or keep empty if we want single theme */
-}
+/* Remove old themes for now to enforce new design (placeholders) */
 
-/* 基础样式 */
+/* Base Styles */
 html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -296,14 +292,14 @@ body::after {
     }
 }
 
-/* 容器 */
+/* Container */
 .container {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--container-padding);
 }
 
-/* 固定头部包装器 */
+/* Sticky Header Wrapper */
 .header-wrapper {
     position: fixed;
     top: 0;
@@ -316,7 +312,7 @@ body::after {
     border-bottom: 1px solid var(--border-default);
 }
 
-/* 头部 - 左右布局 */
+/* Header - Left-Right Layout */
 .header {
     background-color: transparent;
     padding: var(--space-4) 0;
@@ -328,9 +324,9 @@ body::after {
     justify-content: space-between;
 }
 
-/* 头部Logo样式 */
+/* Header Logo Styles */
 .header-logo {
-    font-family: var(--font-family-brand);
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-xl);
     font-weight: 600;
     line-height: 1.1;
@@ -338,7 +334,7 @@ body::after {
     flex-shrink: 0;
 }
 
-/* Logo 设计 */
+/* Logo Design */
 .header-logo .logo-design {
     color: var(--fg-primary);
     font-weight: 700;
@@ -362,7 +358,7 @@ body::after {
     box-shadow: 0 0 8px var(--accent);
 }
 
-/* 导航 - 在头部右侧 */
+/* Navigation - Top Right */
 .navigation {
     flex-shrink: 0;
 }
@@ -392,7 +388,7 @@ body::after {
     background-color: var(--surface-hover);
 }
 
-/* Hero 区域 - 为固定头部留出空间 */
+/* Hero Area - Spacing for Sticky Header */
 .hero {
     background: transparent;
     /* Remove old gradient, let body bg show */
@@ -414,7 +410,7 @@ body::after {
 }
 
 .hero-text {
-    font-family: var(--font-family-brand);
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', Georgia, 'Times New Roman', serif;
     font-size: var(--font-size-4xl);
     /* Increased size */
     font-weight: var(--font-weight-semibold);
@@ -489,13 +485,13 @@ body::after {
 }
 
 
-/* 主要内容区域 - 为固定头部留出空间 */
+/* Main Content Area - Spacing for Sticky Header */
 .main {
     padding: 0 0 var(--space-16) 0;
 }
 
 
-/* 区块样式 */
+/* Section Styles */
 .section {
     margin-bottom: var(--space-20);
     border-top: 1px solid var(--border-default);
@@ -515,6 +511,7 @@ body::after {
 }
 
 .section-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-semibold);
     color: var(--fg-primary);
@@ -607,7 +604,7 @@ body::after {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
 }
 
-/* 原则网格布局 */
+/* Principles Grid Layout */
 .principles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -633,6 +630,7 @@ body::after {
 }
 
 .principle-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
     color: var(--fg-primary);
@@ -668,7 +666,7 @@ body::after {
     font-weight: var(--font-weight-bold);
 }
 
-/* 约束网格布局 */
+/* Constraints Grid Layout */
 .constraints-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -692,6 +690,7 @@ body::after {
 }
 
 .constraint-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
     color: var(--fg-primary);
@@ -721,7 +720,7 @@ body::after {
     font-style: italic;
 }
 
-/* Prompt 框架区域 */
+/* Prompt Framework Area */
 .section-title-row {
     display: flex;
     align-items: center;
@@ -763,6 +762,7 @@ body::after {
 }
 
 .sidebar-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--fg-primary);
@@ -845,6 +845,7 @@ body::after {
 }
 
 .panel-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--fg-primary);
@@ -976,9 +977,7 @@ body::after {
     min-width: 0;
 }
 
-.style-embed-actions {
-    /* Removed */
-}
+/* .style-embed-actions removed */
 
 .style-embed-title {
     font-size: var(--font-size-base);
@@ -997,9 +996,7 @@ body::after {
     margin-top: 2px;
 }
 
-.style-embed-link {
-    /* Removed */
-}
+/* .style-embed-link removed */
 
 /* Style copy button */
 .style-copy-btn {
@@ -1199,7 +1196,7 @@ body::after {
     }
 }
 
-/* 设置 / 快捷启动 */
+/* Settings / Quick Launch */
 .settings-shell {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -1276,6 +1273,7 @@ body::after {
 }
 
 .tool-name {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--text-heading);
@@ -1339,7 +1337,7 @@ body::after {
     outline-offset: 2px;
 }
 
-/* 配色示例 */
+/* Color Palette Examples */
 .color-palette {
     display: flex;
     justify-content: center;
@@ -1374,7 +1372,7 @@ body::after {
     background-color: var(--color-accent);
 }
 
-/* 排版示例 */
+/* Typography Examples */
 .typography-example {
     text-align: left;
     margin-bottom: var(--space-2);
@@ -1399,7 +1397,7 @@ body::after {
     color: var(--color-neutral-600);
 }
 
-/* 间距示例 */
+/* Spacing Examples */
 .spacing-example {
     display: flex;
     justify-content: center;
@@ -1415,7 +1413,7 @@ body::after {
     border-radius: var(--radius-sm);
 }
 
-/* 组件示例 */
+/* Component Examples */
 .component-example {
     display: flex;
     justify-content: center;
@@ -1451,7 +1449,7 @@ body::after {
     color: var(--color-neutral-600);
 }
 
-/* 图标示例 */
+/* Icon Examples */
 .icon-example {
     display: flex;
     justify-content: center;
@@ -1471,7 +1469,7 @@ body::after {
     font-size: 16px;
 }
 
-/* 动画示例 */
+/* Animation Examples */
 .animation-example {
     display: flex;
     justify-content: center;
@@ -1501,7 +1499,7 @@ body::after {
     }
 }
 
-/* 应用方式列表 */
+/* Application Methods List */
 .applications-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1554,7 +1552,7 @@ body::after {
     white-space: pre-wrap;
 }
 
-/* 页脚 */
+/* Footer */
 .footer {
     background-color: var(--bg-surface-alt);
     border-top: 1px solid var(--border-base);
@@ -1574,13 +1572,13 @@ body::after {
     margin-bottom: 0;
 }
 
-/* 响应式设计 */
+/* Responsive Design */
 @media (max-width: 768px) {
     :root {
         --container-padding: var(--space-4);
     }
 
-    /* 移动端 logo 调整 */
+    /* Mobile logo adjustment */
     .header-logo {
         font-size: var(--font-size-lg);
     }
@@ -1594,10 +1592,10 @@ body::after {
         bottom: -1px;
     }
 
-    /* 移动端调整 hero 区域间距 */
+    /* Mobile hero spacing adjustment */
     .hero {
         padding: calc(var(--space-8) + 120px) 0 var(--space-12) 0;
-        /* 移动端头部较高（垂直布局），增加间距 */
+        /* Mobile header is taller (vertical layout), increase spacing */
     }
 
     /* 移动端头部布局调整 - 强制覆盖 */
@@ -1688,10 +1686,10 @@ body::after {
         font-size: var(--font-size-lg);
     }
 
-    /* 小屏幕进一步调整 hero 区域间距 */
+    /* Further adjust hero area spacing for small screens */
     .hero {
         padding: calc(var(--space-6) + 100px) 0 var(--space-10) 0;
-        /* 小屏幕头部调整 */
+        /* Mobile header adjustment */
     }
 
     .header-logo .logo-prompt::after {
@@ -1734,7 +1732,7 @@ body::after {
     }
 }
 
-/* 打印样式 */
+/* Print Styles */
 @media print {
 
     .navigation,

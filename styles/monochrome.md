@@ -1,23 +1,23 @@
 # Monochrome Design System
 
-**风格ID**: monochrome
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: A stark, editorial design system built on pure black and white. No accent colors—just dramatic contrast, oversized serif typography, and precise geometric layouts. Evokes high-end fashion editorials and architectural portfolios. Austere, sophisticated, unapologetically bold.
+**Style ID**: monochrome
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: A stark, editorial design system built on pure black and white. No accent colors—just dramatic contrast, oversized serif typography, and precise geometric layouts. Evokes high-end fashion editorials and architectural portfolios. Austere, sophisticated, unapologetically bold.
 
-## 适用场景
+## Best For
 - 高端时尚品牌
 - 建筑设计作品集
 - 艺术展览网站
 - 奢侈品电商
 
-## 情感调性
+## Emotional Tone
 优雅、权威、永恒、戏剧化、精致
 
-## 适用行业
+## Industries
 时尚、建筑、艺术、设计
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.

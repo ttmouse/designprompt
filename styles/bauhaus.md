@@ -1,23 +1,23 @@
 # Bauhaus Design System
 
-**风格ID**: bauhaus
-**模式**: Light
-**字体类型**: Sans-serif
-**简短描述**: Bold geometric modernism with circles, squares, and triangles. Primary color palette (Red/Blue/Yellow) with stark black borders and hard shadows. Functional yet artistic with constructivist asymmetry.
+**Style ID**: bauhaus
+**Theme**: Light
+**Typography**: Sans-serif
+**Short Description**: Bold geometric modernism with circles, squares, and triangles. Primary color palette (Red/Blue/Yellow) with stark black borders and hard shadows. Functional yet artistic with constructivist asymmetry.
 
-## 适用场景
+## Best For
 - 创意设计机构
 - 艺术工作室
 - 现代品牌
 - 设计教育平台
 
-## 情感调性
+## Emotional Tone
 大胆、艺术、功能性、建筑感、现代
 
-## 适用行业
+## Industries
 设计、艺术、教育、创意产业
 
-## 设计系统提示词
+## Design System Prompt
 
 <role>
 You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.
