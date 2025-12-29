@@ -1,297 +1,297 @@
 // 基础交互功能
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 主题切换逻辑
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    
-    // 初始化主题
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme !== 'light') {
-        htmlElement.setAttribute('data-theme', savedTheme);
-    }
-    updateThemeIcon(savedTheme);
+document.addEventListener('DOMContentLoaded', function () {
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', function() {
-            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
-            let newTheme = 'light';
-            
-            // 循环切换：Light -> Dark -> Warm -> Light
-            if (currentTheme === 'light') {
-                newTheme = 'dark';
-            } else if (currentTheme === 'dark') {
-                newTheme = 'warm';
-            } else {
-                newTheme = 'light';
-            }
-            
-            if (newTheme === 'light') {
-                htmlElement.removeAttribute('data-theme');
-            } else {
-                htmlElement.setAttribute('data-theme', newTheme);
-            }
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
+  // 主题切换逻辑
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+
+  // 初始化主题
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme !== 'light') {
+    htmlElement.setAttribute('data-theme', savedTheme);
+  }
+  updateThemeIcon(savedTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function () {
+      const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+      let newTheme = 'light';
+
+      // 循环切换：Light -> Dark -> Warm -> Light
+      if (currentTheme === 'light') {
+        newTheme = 'dark';
+      } else if (currentTheme === 'dark') {
+        newTheme = 'warm';
+      } else {
+        newTheme = 'light';
+      }
+
+      if (newTheme === 'light') {
+        htmlElement.removeAttribute('data-theme');
+      } else {
+        htmlElement.setAttribute('data-theme', newTheme);
+      }
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
+
+  function updateThemeIcon(theme) {
+    if (!themeToggleBtn) return;
+    if (theme === 'dark') {
+      themeToggleBtn.textContent = '🌙';
+      themeToggleBtn.title = '当前：暗色模式';
+    } else if (theme === 'warm') {
+      themeToggleBtn.textContent = '☕';
+      themeToggleBtn.title = '当前：暖色模式';
+    } else {
+      themeToggleBtn.textContent = '☀️';
+      themeToggleBtn.title = '当前：亮色模式';
+    }
+  }
+
+  // 平滑滚动到锚点
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const navHeight = document.querySelector('.navigation').offsetHeight;
+        const targetPosition = targetElement.offsetTop - headerHeight - navHeight - 20;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
         });
-    }
+      }
+    });
+  });
 
-    function updateThemeIcon(theme) {
-        if (!themeToggleBtn) return;
-        if (theme === 'dark') {
-            themeToggleBtn.textContent = '🌙';
-            themeToggleBtn.title = '当前：暗色模式';
-        } else if (theme === 'warm') {
-            themeToggleBtn.textContent = '☕';
-            themeToggleBtn.title = '当前：暖色模式';
-        } else {
-            themeToggleBtn.textContent = '☀️';
-            themeToggleBtn.title = '当前：亮色模式';
-        }
-    }
+  // 导航栏激活状态
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinksArray = Array.from(navLinks);
 
-    // 平滑滚动到锚点
-    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 200;
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+    for (const section of sections) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const navHeight = document.querySelector('.navigation').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - navHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinksArray.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
         });
+        break;
+      }
+    }
+  }
+
+  // 滚动时更新导航状态
+  window.addEventListener('scroll', updateActiveNavLink);
+
+  // 卡片悬停效果增强
+  const cards = document.querySelectorAll('.principle-card, .constraint-card, .application-item');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateY(-4px)';
     });
 
-    // 导航栏激活状态
-    const sections = document.querySelectorAll('.section[id]');
-    const navLinksArray = Array.from(navLinks);
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateY(0)';
+    });
+  });
 
-    function updateActiveNavLink() {
-        const scrollPosition = window.scrollY + 200;
+  // 优化的淡入动画
+  const observerOptions = {
+    threshold: 0.05,  // 更早触发
+    rootMargin: '0px 0px 50px 0px'  // 提前50px触发
+  };
 
-        for (const section of sections) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('animated');
+      }
+    });
+  }, observerOptions);
 
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinksArray.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-                break;
-            }
-        }
+  // 为卡片添加初始状态并观察（优化延迟）
+  cards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+
+    // 减少累积延迟：分组动画而不是逐个延迟
+    const groupIndex = Math.floor(index / 4); // 每4个卡片为一组
+    const delay = groupIndex * 0.1; // 组间延迟0.1s，组内同时开始
+
+    card.style.transition = `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`;
+    observer.observe(card);
+  });
+
+  // 移动端导航优化
+  let isMobile = window.innerWidth <= 768;
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  function handleTouchStart(e) {
+    touchStartY = e.changedTouches[0].screenY;
+  }
+
+  function handleTouchEnd(e) {
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }
+
+  function handleSwipe() {
+    const swipeDistance = touchStartY - touchEndY;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      // 可以在这里添加滑动手势逻辑
     }
+  }
 
-    // 滚动时更新导航状态
-    window.addEventListener('scroll', updateActiveNavLink);
+  if (isMobile) {
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+  }
 
-    // 卡片悬停效果增强
-    const cards = document.querySelectorAll('.principle-card, .constraint-card, .application-item');
-
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-4px)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // 优化的淡入动画
-    const observerOptions = {
-        threshold: 0.05,  // 更早触发
-        rootMargin: '0px 0px 50px 0px'  // 提前50px触发
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-
-    // 为卡片添加初始状态并观察（优化延迟）
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-
-        // 减少累积延迟：分组动画而不是逐个延迟
-        const groupIndex = Math.floor(index / 4); // 每4个卡片为一组
-        const delay = groupIndex * 0.1; // 组间延迟0.1s，组内同时开始
-
-        card.style.transition = `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`;
-        observer.observe(card);
-    });
-
-    // 移动端导航优化
-    let isMobile = window.innerWidth <= 768;
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    function handleTouchStart(e) {
-        touchStartY = e.changedTouches[0].screenY;
+  // 窗口大小改变时更新移动端状态
+  window.addEventListener('resize', function () {
+    isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
     }
+  });
 
-    function handleTouchEnd(e) {
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
+  // 键盘导航支持
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Tab') {
+      document.body.classList.add('keyboard-navigation');
     }
+  });
 
-    function handleSwipe() {
-        const swipeDistance = touchStartY - touchEndY;
-        const minSwipeDistance = 50;
+  document.addEventListener('mousedown', function () {
+    document.body.classList.remove('keyboard-navigation');
+  });
 
-        if (Math.abs(swipeDistance) > minSwipeDistance) {
-            // 可以在这里添加滑动手势逻辑
-        }
-    }
+  // 打印优化
+  window.addEventListener('beforeprint', function () {
+    document.body.classList.add('printing');
+  });
 
-    if (isMobile) {
-        document.addEventListener('touchstart', handleTouchStart);
-        document.addEventListener('touchend', handleTouchEnd);
-    }
+  window.addEventListener('afterprint', function () {
+    document.body.classList.remove('printing');
+  });
 
-    // 窗口大小改变时更新移动端状态
-    window.addEventListener('resize', function() {
-        isMobile = window.innerWidth <= 768;
-        if (!isMobile) {
-            document.removeEventListener('touchstart', handleTouchStart);
-            document.removeEventListener('touchend', handleTouchEnd);
-        }
+  fetch('data/refactoring-ui-principles.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      const container = document.querySelector('#refactoring-ui .principles-grid');
+      if (!container) return;
+      data.principles.forEach(function (section) {
+        const card = document.createElement('div');
+        card.className = 'principle-card';
+        const title = document.createElement('h3');
+        title.className = 'principle-title';
+        title.textContent = section.category;
+        const list = document.createElement('ul');
+        list.className = 'principle-points';
+        section.items.forEach(function (item) {
+          const li = document.createElement('li');
+          li.textContent = item;
+          list.appendChild(li);
+        });
+        card.appendChild(title);
+        card.appendChild(list);
+        container.appendChild(card);
+      });
     });
 
-    // 键盘导航支持
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
-        }
+  fetch('data/ai-exec-spec.json')
+    .then(function (res) { return res.json(); })
+    .then(function (spec) {
+      const grid = document.getElementById('ai-exec-grid');
+      if (!grid) return;
+      spec.categories.forEach(function (cat) {
+        const card = document.createElement('div');
+        card.className = 'principle-card';
+        const title = document.createElement('h3');
+        title.className = 'principle-title';
+        title.textContent = cat.name;
+        const list = document.createElement('ul');
+        list.className = 'principle-points';
+        cat.rules.forEach(function (rule) {
+          const li = document.createElement('li');
+          li.textContent = rule.description;
+          list.appendChild(li);
+        });
+        card.appendChild(title);
+        card.appendChild(list);
+        grid.appendChild(card);
+      });
     });
 
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-navigation');
+  fetch('data/ai-exec-core.json')
+    .then(function (res) { return res.json(); })
+    .then(function (core) {
+      const grid = document.getElementById('ai-core-grid');
+      if (!grid) return;
+      core.gates.forEach(function (g) {
+        const card = document.createElement('div');
+        card.className = 'principle-card';
+        const title = document.createElement('h3');
+        title.className = 'principle-title';
+        title.textContent = g.desc;
+        const list = document.createElement('ul');
+        list.className = 'principle-points';
+        const li = document.createElement('li');
+        li.textContent = JSON.stringify(g.target);
+        list.appendChild(li);
+        card.appendChild(title);
+        card.appendChild(list);
+        grid.appendChild(card);
+      });
     });
 
-    // 打印优化
-    window.addEventListener('beforeprint', function() {
-        document.body.classList.add('printing');
+  fetch('data/prompt-framework.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      initPromptFramework(data);
+    })
+    .catch(function (err) {
+      console.error('Failed to load prompt framework', err);
     });
 
-    window.addEventListener('afterprint', function() {
-        document.body.classList.remove('printing');
+  fetch('data/tool-shortcuts.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      initToolShortcuts(data);
+    })
+    .catch(function (err) {
+      console.error('Failed to load tool shortcuts', err);
     });
 
-    fetch('data/refactoring-ui-principles.json')
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-            const container = document.querySelector('#refactoring-ui .principles-grid');
-            if (!container) return;
-            data.principles.forEach(function(section) {
-                const card = document.createElement('div');
-                card.className = 'principle-card';
-                const title = document.createElement('h3');
-                title.className = 'principle-title';
-                title.textContent = section.category;
-                const list = document.createElement('ul');
-                list.className = 'principle-points';
-                section.items.forEach(function(item) {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    list.appendChild(li);
-                });
-                card.appendChild(title);
-                card.appendChild(list);
-                container.appendChild(card);
-            });
-        });
-
-    fetch('data/ai-exec-spec.json')
-        .then(function(res) { return res.json(); })
-        .then(function(spec) {
-            const grid = document.getElementById('ai-exec-grid');
-            if (!grid) return;
-            spec.categories.forEach(function(cat) {
-                const card = document.createElement('div');
-                card.className = 'principle-card';
-                const title = document.createElement('h3');
-                title.className = 'principle-title';
-                title.textContent = cat.name;
-                const list = document.createElement('ul');
-                list.className = 'principle-points';
-                cat.rules.forEach(function(rule) {
-                    const li = document.createElement('li');
-                    li.textContent = rule.description;
-                    list.appendChild(li);
-                });
-                card.appendChild(title);
-                card.appendChild(list);
-                grid.appendChild(card);
-            });
-        });
-
-    fetch('data/ai-exec-core.json')
-        .then(function(res) { return res.json(); })
-        .then(function(core) {
-            const grid = document.getElementById('ai-core-grid');
-            if (!grid) return;
-            core.gates.forEach(function(g) {
-                const card = document.createElement('div');
-                card.className = 'principle-card';
-                const title = document.createElement('h3');
-                title.className = 'principle-title';
-                title.textContent = g.desc;
-                const list = document.createElement('ul');
-                list.className = 'principle-points';
-                const li = document.createElement('li');
-                li.textContent = JSON.stringify(g.target);
-                list.appendChild(li);
-                card.appendChild(title);
-                card.appendChild(list);
-                grid.appendChild(card);
-            });
-        });
-
-    fetch('data/prompt-framework.json')
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-            initPromptFramework(data);
-        })
-        .catch(function(err) {
-            console.error('Failed to load prompt framework', err);
-        });
-
-    fetch('data/tool-shortcuts.json')
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-            initToolShortcuts(data);
-        })
-        .catch(function(err) {
-            console.error('Failed to load tool shortcuts', err);
-        });
-
-    const styleEmbedSource = [
-        { 
-            name: 'Monochrome', 
-            tone: '白',
-            prompt: `color-palette:
+  const styleEmbedSource = [
+    {
+      name: 'Monochrome',
+      tone: '白',
+      prompt: `color-palette:
   #000000: "Primary, Text, Borders"
   #FFFFFF: "Background, Negative Space"
   #F5F5F5: "Subtle Backgrounds"
@@ -316,11 +316,11 @@ style-guide:
   - "Emphasize negative space"
   - "Use lines and borders to separate content"
   - "Avoid drop shadows and gradients"`
-        },
-        { 
-            name: 'Bauhaus', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Bauhaus',
+      tone: '白',
+      prompt: `color-palette:
   #FF0000: "Bauhaus Red"
   #0000FF: "Bauhaus Blue"
   #FFFF00: "Bauhaus Yellow"
@@ -347,11 +347,11 @@ style-guide:
   - "Use primary colors boldly"
   - "Integrate geometric primitives"
   - "Avoid decorative ornamentation"`
-        },
-        { 
-            name: 'Modern Dark', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Modern Dark',
+      tone: '黑',
+      prompt: `color-palette:
   #0F172A: "Background (Slate 900)"
   #1E293B: "Surface (Slate 800)"
   #38BDF8: "Primary Accent (Sky 400)"
@@ -378,11 +378,11 @@ style-guide:
   - "Use borders to define hierarchy (1px solid white/5%)"
   - "Limit accent color usage to key actions"
   - "Avoid pure black (#000000) for backgrounds"`
-        },
-        { 
-            name: 'Newsprint', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Newsprint',
+      tone: '白',
+      prompt: `color-palette:
   #FDFBF7: "Paper Background (Off-white)"
   #1A1A1A: "Ink Black"
   #CC0000: "Editorial Red (Accents)"
@@ -408,11 +408,11 @@ style-guide:
   - "Use serifs for both headings and body"
   - "Justify text where appropriate"
   - "Use lines to separate stories/sections"`
-        },
-        { 
-            name: 'SaaS', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'SaaS',
+      tone: '白',
+      prompt: `color-palette:
   #FFFFFF: "Background"
   #3B82F6: "Primary Blue"
   #111827: "Text Primary"
@@ -439,11 +439,11 @@ style-guide:
   - "Use friendly, rounded shapes"
   - "Consistent iconography (Outline or Solid)"
   - "Clear Call-to-Actions (CTAs)"`
-        },
-        { 
-            name: 'Luxury', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Luxury',
+      tone: '白',
+      prompt: `color-palette:
   #0A0A0A: "Primary Text/Background"
   #F4F1EA: "Cream/Paper"
   #D4AF37: "Gold Foil/Accent"
@@ -469,11 +469,11 @@ style-guide:
   - "Focus on typography and imagery"
   - "Use metallic tones sparingly"
   - "Create a sense of exclusivity"`
-        },
-        { 
-            name: 'Terminal', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Terminal',
+      tone: '黑',
+      prompt: `color-palette:
   #000000: "CRT Black"
   #00FF00: "Phosphor Green"
   #333333: "Dimmed Text"
@@ -499,11 +499,11 @@ style-guide:
   - "Use green on black exclusively"
   - "No images, only ASCII art"
   - "Raw, brutalist, developer-focused"`
-        },
-        { 
-            name: 'Swiss Minimalist', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Swiss Minimalist',
+      tone: '白',
+      prompt: `color-palette:
   #FFFFFF: "Canvas"
   #000000: "Ink"
   #FF3333: "Accent (Swiss Red)"
@@ -529,11 +529,11 @@ style-guide:
   - "Asymmetrical organization"
   - "Use of a mathematically constructed grid"
   - "Sans-serif typography is mandatory"`
-        },
-        { 
-            name: 'Kinetic', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Kinetic',
+      tone: '黑',
+      prompt: `color-palette:
   #000000: "Background"
   #CCFF00: "Volt / Lime"
   #FF00FF: "Magenta"
@@ -559,11 +559,11 @@ style-guide:
   - "Bold, wide typography"
   - "High contrast neon colors"
   - "Feels fast and loud"`
-        },
-        { 
-            name: 'Flat Design', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Flat Design',
+      tone: '白',
+      prompt: `color-palette:
   #2ECC71: "Emerald"
   #3498DB: "Peter River"
   #E74C3C: "Alizarin"
@@ -591,11 +591,11 @@ style-guide:
   - "Focus on color and typography"
   - "Simple, user-centric interface"
   - "Fast loading, vector-based assets"`
-        },
-        { 
-            name: 'Art Deco', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Art Deco',
+      tone: '黑',
+      prompt: `color-palette:
   #1A1A1A: "Midnight Black"
   #D4AF37: "Gold Metallic"
   #004225: "Emerald Green"
@@ -621,11 +621,11 @@ style-guide:
   - "Geometric shapes (triangles, chevrons)"
   - "Metallic accents (gold, brass, chrome)"
   - "Vertical emphasis"`
-        },
-        { 
-            name: 'Material Design', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Material Design',
+      tone: '白',
+      prompt: `color-palette:
   #6200EE: "Primary (Purple 500)"
   #03DAC6: "Secondary (Teal 200)"
   #FFFFFF: "Surface"
@@ -652,11 +652,11 @@ style-guide:
   - "Use shadows to convey depth and order"
   - "Bold, graphic, intentional imagery"
   - "Motion provides meaning"`
-        },
-        { 
-            name: 'Neo Brutalism', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Neo Brutalism',
+      tone: '白',
+      prompt: `color-palette:
   #FFDD00: "Yellow"
   #FF4D4D: "Red"
   #4D79FF: "Blue"
@@ -683,11 +683,11 @@ style-guide:
   - "High contrast colors and strokes"
   - "Default system fonts"
   - "Reaction against 'clean' design"`
-        },
-        { 
-            name: 'Bold Typography', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Bold Typography',
+      tone: '黑',
+      prompt: `color-palette:
   #000000: "Background"
   #FFFFFF: "Text"
   #FF3366: "Accent (optional)"
@@ -712,11 +712,11 @@ style-guide:
   - "Maximize contrast and scale"
   - "Minimalist approach to other elements"
   - "Short, punchy copy"`
-        },
-        { 
-            name: 'Academia', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Academia',
+      tone: '白',
+      prompt: `color-palette:
   #F5F5DC: "Beige / Parchment"
   #2F4F4F: "Dark Slate Gray"
   #8B4513: "Saddle Brown"
@@ -742,11 +742,11 @@ style-guide:
   - "Warm, earthy textures"
   - "Respect for traditional typesetting"
   - "Calm and focused"`
-        },
-        { 
-            name: 'Cyberpunk', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Cyberpunk',
+      tone: '黑',
+      prompt: `color-palette:
   #050505: "Void Black"
   #00FFFF: "Cyan / Electric Blue"
   #FF0099: "Neon Pink"
@@ -772,11 +772,11 @@ style-guide:
   - "Neon lights in darkness"
   - "Glitch effects and distortion"
   - "Japanese cyberpunk influences"`
-        },
-        { 
-            name: 'Web3', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Web3',
+      tone: '黑',
+      prompt: `color-palette:
   #0D0D15: "Deep Space"
   #6D28D9: "Violet"
   #EC4899: "Pink"
@@ -802,11 +802,11 @@ style-guide:
   - "Dark mode with vibrant gradients"
   - "Glassmorphism and transparency"
   - "Abstract, ethereal visuals"`
-        },
-        { 
-            name: 'Playful Geometric', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Playful Geometric',
+      tone: '白',
+      prompt: `color-palette:
   #FF6B6B: "Pastel Red"
   #4ECDC4: "Pastel Teal"
   #FFE66D: "Pastel Yellow"
@@ -833,11 +833,11 @@ style-guide:
   - "Bright, happy colors"
   - "Rounded corners everywhere"
   - "Sense of movement and joy"`
-        },
-        { 
-            name: 'Minimal Dark', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Minimal Dark',
+      tone: '黑',
+      prompt: `color-palette:
   #000000: "True Black"
   #111111: "Off Black (Surface)"
   #FFFFFF: "Text High Emphasis"
@@ -863,11 +863,11 @@ style-guide:
   - "Remove all non-essential elements"
   - "Strict monochromatic palette"
   - "Sophisticated and premium"`
-        },
-        { 
-            name: 'Claymorphism', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Claymorphism',
+      tone: '白',
+      prompt: `color-palette:
   #E0E5EC: "Background (Light Gray)"
   #FFFFFF: "Highlight"
   #A3B1C6: "Shadow"
@@ -893,11 +893,11 @@ style-guide:
   - "Soft shadows and rounded corners"
   - "Pastel and airy colors"
   - "Tactile, touchable feel"`
-        },
-        { 
-            name: 'Professional', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Professional',
+      tone: '白',
+      prompt: `color-palette:
   #003366: "Navy Blue (Trust)"
   #FFFFFF: "White"
   #F4F4F4: "Light Gray"
@@ -923,11 +923,11 @@ style-guide:
   - "Safe color choices (Blues, Greys)"
   - "Standard UX patterns"
   - "Focus on information delivery"`
-        },
-        { 
-            name: 'Botanical', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Botanical',
+      tone: '白',
+      prompt: `color-palette:
   #F7F9F4: "Off-white / Paper"
   #2D4A3E: "Forest Green"
   #8FBC8F: "Sage Green"
@@ -953,11 +953,11 @@ style-guide:
   - "Muted, earthy color palette"
   - "Use of plant imagery and textures"
   - "Calm and restorative"`
-        },
-        { 
-            name: 'Vaporwave', 
-            tone: '黑',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Vaporwave',
+      tone: '黑',
+      prompt: `color-palette:
   #FF71CE: "Hot Pink"
   #01CDFE: "Cyan"
   #05FFA1: "Neon Green"
@@ -984,11 +984,11 @@ style-guide:
   - "Nostalgia for 80s/90s tech"
   - "Surrealism and irony"
   - "Lo-fi digital artifacts"`
-        },
-        { 
-            name: 'Enterprise', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Enterprise',
+      tone: '白',
+      prompt: `color-palette:
   #F1F5F9: "Background (Slate 100)"
   #FFFFFF: "Panel Background"
   #0F172A: "Text (Slate 900)"
@@ -1014,11 +1014,11 @@ style-guide:
   - "Data density is priority"
   - "Clear status indicators (Red/Green/Yellow)"
   - "Functional and efficient"`
-        },
-        { 
-            name: 'Sketch', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Sketch',
+      tone: '白',
+      prompt: `color-palette:
   #FFFFFF: "Paper"
   #2F2F2F: "Graphite / Pencil"
   #E0E0E0: "Eraser marks"
@@ -1044,11 +1044,11 @@ style-guide:
   - "Hand-drawn imperfections"
   - "Monochrome with highlighter accents"
   - "Personal and authentic"`
-        },
-        { 
-            name: 'Industrial', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Industrial',
+      tone: '白',
+      prompt: `color-palette:
   #D3D3D3: "Concrete Gray"
   #FFD700: "Safety Yellow"
   #000000: "Black (Markings)"
@@ -1074,11 +1074,11 @@ style-guide:
   - "Raw materials (concrete, steel)"
   - "Safety signage aesthetics"
   - "Robust and heavy"`
-        },
-        { 
-            name: 'Neumorphism', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Neumorphism',
+      tone: '白',
+      prompt: `color-palette:
   #E0E5EC: "Base Color (Light Gray)"
   #FFFFFF: "Highlight (Top-Left)"
   #A3B1C6: "Shadow (Bottom-Right)"
@@ -1104,11 +1104,11 @@ style-guide:
   - "Low contrast, monochromatic"
   - "Play with light and shadow"
   - "Modern, minimal, futuristic"`
-        },
-        { 
-            name: 'Organic', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Organic',
+      tone: '白',
+      prompt: `color-palette:
   #FDF6E3: "Cream / Sand"
   #D2691E: "Terracotta"
   #556B2F: "Olive"
@@ -1134,11 +1134,11 @@ style-guide:
   - "Warm, welcoming colors"
   - "Avoid straight lines and sharp corners"
   - "Flowing and human"`
-        },
-        { 
-            name: 'Maximalism', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Maximalism',
+      tone: '白',
+      prompt: `color-palette:
   #FF0000: "Red"
   #00FF00: "Green"
   #0000FF: "Blue"
@@ -1165,11 +1165,11 @@ style-guide:
   - "Sensory overload"
   - "Clashing patterns and colors"
   - "Bold, confident, loud"`
-        },
-        { 
-            name: 'Retro', 
-            tone: '白',
-            prompt: `color-palette:
+    },
+    {
+      name: 'Retro',
+      tone: '白',
+      prompt: `color-palette:
   #EADDCD: "Aged Paper"
   #C0392B: "Retro Red"
   #E67E22: "Burnt Orange"
@@ -1195,439 +1195,522 @@ style-guide:
   - "Warm, aged aesthetic"
   - "Texture is key (grain, dust)"
   - "Fun and familiar"`
-        }
-    ];
+    }
+  ];
 
-    const styleEmbedData = styleEmbedSource.map(function(style) {
-        const normalized = style.name.trim().replace(/\s+/g, '-');
-        const slug = normalized.toLowerCase();
-        const theme = style.tone === '黑' ? 'dark' : 'light';
-        return {
-            name: normalized,
-            slug: slug,
-            category: `${style.tone === '黑' ? 'Dark' : 'Light'} UI`,
-            url: `https://www.designprompts.dev/${slug}`,
-            theme: theme,
-            themeLabel: theme === 'dark' ? 'Dark' : 'Light',
-            prompt: style.prompt // Pass the prompt data
-        };
+  const styleEmbedData = styleEmbedSource.map(function (style) {
+    const normalized = style.name.trim().replace(/\s+/g, '-');
+    const slug = normalized.toLowerCase();
+    const theme = style.tone === '黑' ? 'dark' : 'light';
+    return {
+      name: normalized,
+      slug: slug,
+      category: `${style.tone === '黑' ? 'Dark' : 'Light'} UI`,
+      url: `https://www.designprompts.dev/${slug}`,
+      theme: theme,
+      themeLabel: theme === 'dark' ? 'Dark' : 'Light',
+      prompt: style.prompt // Pass the prompt data
+    };
+  });
+  initStyleEmbeds(styleEmbedData);
+
+  function initPromptFramework(data) {
+    const categoryListEl = document.getElementById('prompt-category-list');
+    const titleEl = document.getElementById('prompt-category-title');
+    const descEl = document.getElementById('prompt-category-desc');
+    const highlightsEl = document.getElementById('prompt-category-highlights');
+    const modulesEl = document.getElementById('prompt-module-list');
+    const layoutBadgeEl = document.getElementById('prompt-category-layout');
+    const collectionListEl = document.getElementById('prompt-collection-list');
+
+    if (!categoryListEl || !titleEl || !descEl) return;
+
+    const categories = Array.isArray(data?.categories) ? data.categories : [];
+    const collections = Array.isArray(data?.collections) ? data.collections : [];
+    const layoutLabels = {
+      'hero-centered': '居中主视觉',
+      'stacked': '分层堆叠',
+      'swatches': '色卡展示',
+      'cards': '卡片叠层',
+      'modules': '模块化',
+      'type-mix': '混合排版',
+      'timeline': '叙事轴',
+      'overlay': '叠色覆盖'
+    };
+    let activeCategoryId = categories.length ? categories[0].id : null;
+
+    const renderPlaceholder = function (targetEl, text) {
+      targetEl.innerHTML = '';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'framework-placeholder';
+      placeholder.textContent = text;
+      targetEl.appendChild(placeholder);
+    };
+
+    const selectCategory = function (categoryId) {
+      const category = categories.find(function (cat) { return cat.id === categoryId; });
+      if (!category) {
+        titleEl.textContent = '暂无分类';
+        descEl.textContent = '请先添加分类数据。';
+        layoutBadgeEl.textContent = '--';
+        renderPlaceholder(highlightsEl, '等待分类信息');
+        renderPlaceholder(modulesEl, '等待模块数据');
+        return;
+      }
+
+      activeCategoryId = categoryId;
+      titleEl.textContent = category.name;
+      descEl.textContent = category.description || '该分类暂无描述。';
+      layoutBadgeEl.textContent = layoutLabels[category.layout] || '模块';
+
+      // 更新激活态
+      const buttons = categoryListEl.querySelectorAll('.framework-category');
+      buttons.forEach(function (btn) {
+        if (btn.dataset.category === categoryId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      highlightsEl.innerHTML = '';
+      if (Array.isArray(category.highlights) && category.highlights.length) {
+        category.highlights.forEach(function (item) {
+          const chip = document.createElement('span');
+          chip.className = 'highlight-chip';
+          chip.textContent = item;
+          highlightsEl.appendChild(chip);
+        });
+      } else {
+        renderPlaceholder(highlightsEl, '暂无高亮信息');
+      }
+
+      modulesEl.innerHTML = '';
+      if (Array.isArray(category.modules) && category.modules.length) {
+        category.modules.forEach(function (module) {
+          const card = document.createElement('article');
+          card.className = 'module-card';
+          const title = document.createElement('h4');
+          title.textContent = module.title || '未命名模块';
+          card.appendChild(title);
+
+          if (Array.isArray(module.items) && module.items.length) {
+            const list = document.createElement('ul');
+            module.items.forEach(function (item) {
+              const li = document.createElement('li');
+              li.textContent = item;
+              list.appendChild(li);
+            });
+            card.appendChild(list);
+          } else {
+            const empty = document.createElement('p');
+            empty.className = 'panel-description';
+            empty.textContent = '暂无详细条目';
+            card.appendChild(empty);
+          }
+
+          modulesEl.appendChild(card);
+        });
+      } else {
+        renderPlaceholder(modulesEl, '该分类暂未设置模块');
+      }
+    };
+
+    const renderCategoryList = function () {
+      categoryListEl.innerHTML = '';
+      if (!categories.length) {
+        renderPlaceholder(categoryListEl, '等待分类数据');
+        return;
+      }
+
+      categories.forEach(function (category) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'framework-category';
+        button.dataset.category = category.id;
+
+        const title = document.createElement('h4');
+        title.textContent = category.name;
+        button.appendChild(title);
+
+        const desc = document.createElement('p');
+        if (Array.isArray(category.highlights) && category.highlights.length) {
+          desc.textContent = category.highlights.slice(0, 2).join(' · ');
+        } else {
+          desc.textContent = category.description || '暂无描述';
+        }
+        button.appendChild(desc);
+
+        button.addEventListener('click', function () {
+          selectCategory(category.id);
+        });
+
+        categoryListEl.appendChild(button);
+      });
+    };
+
+    const renderCollections = function () {
+      if (!collectionListEl) return;
+      collectionListEl.innerHTML = '';
+
+      if (!collections.length) {
+        renderPlaceholder(collectionListEl, '尚未创建套件');
+        return;
+      }
+
+      collections.forEach(function (collection) {
+        const card = document.createElement('article');
+        card.className = 'collection-card';
+
+        const header = document.createElement('header');
+        const title = document.createElement('h4');
+        title.textContent = collection.title;
+        header.appendChild(title);
+
+        if (collection.summary) {
+          const summary = document.createElement('p');
+          summary.textContent = collection.summary;
+          header.appendChild(summary);
+        }
+
+        card.appendChild(header);
+
+        if (Array.isArray(collection.categoryRefs) && collection.categoryRefs.length) {
+          const tags = document.createElement('div');
+          tags.className = 'collection-tags';
+          collection.categoryRefs.forEach(function (ref) {
+            const category = categories.find(function (cat) { return cat.id === ref; });
+            const tag = document.createElement('span');
+            tag.className = 'collection-tag';
+            tag.textContent = category ? category.name : ref;
+            tags.appendChild(tag);
+          });
+          card.appendChild(tags);
+        }
+
+        if (Array.isArray(collection.pillars) && collection.pillars.length) {
+          const pillarsWrap = document.createElement('div');
+          pillarsWrap.className = 'collection-pillars';
+          collection.pillars.forEach(function (pillar) {
+            const pillarCard = document.createElement('div');
+            pillarCard.className = 'pillar';
+
+            const label = document.createElement('p');
+            label.className = 'pillar-label';
+            label.textContent = pillar.label || 'Pillar';
+            pillarCard.appendChild(label);
+
+            if (Array.isArray(pillar.items) && pillar.items.length) {
+              const list = document.createElement('ul');
+              pillar.items.forEach(function (item) {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+              });
+              pillarCard.appendChild(list);
+            }
+
+            pillarsWrap.appendChild(pillarCard);
+          });
+          card.appendChild(pillarsWrap);
+        }
+
+        if (Array.isArray(collection.prompt) && collection.prompt.length) {
+          const snippet = document.createElement('div');
+          snippet.className = 'prompt-snippet';
+          const list = document.createElement('ul');
+          collection.prompt.forEach(function (line) {
+            const li = document.createElement('li');
+            li.textContent = line;
+            list.appendChild(li);
+          });
+          snippet.appendChild(list);
+          card.appendChild(snippet);
+        }
+
+        collectionListEl.appendChild(card);
+      });
+    };
+
+    renderCategoryList();
+    if (activeCategoryId) {
+      selectCategory(activeCategoryId);
+    }
+    renderCollections();
+  }
+
+  function initToolShortcuts(data) {
+    const grid = document.getElementById('quick-launch-grid');
+    const updatedEl = document.getElementById('tool-meta-updated');
+    const countEl = document.getElementById('tool-meta-count');
+
+    if (!grid || !updatedEl || !countEl) return;
+
+    const tools = Array.isArray(data?.tools) ? data.tools : [];
+    updatedEl.textContent = data?.updated || '--';
+    countEl.textContent = tools.length || 0;
+
+    grid.innerHTML = '';
+    if (!tools.length) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'framework-placeholder';
+      placeholder.textContent = '尚未配置快捷软件';
+      grid.appendChild(placeholder);
+      return;
+    }
+
+    tools.forEach(function (tool) {
+      const card = document.createElement('article');
+      card.className = 'tool-card';
+
+      const header = document.createElement('header');
+      const name = document.createElement('h4');
+      name.className = 'tool-name';
+      name.textContent = tool.name || '未命名工具';
+      header.appendChild(name);
+
+      if (tool.shortcut) {
+        const shortcut = document.createElement('span');
+        shortcut.className = 'tool-shortcut';
+        shortcut.textContent = tool.shortcut;
+        header.appendChild(shortcut);
+      }
+
+      card.appendChild(header);
+
+      if (tool.description) {
+        const desc = document.createElement('p');
+        desc.className = 'tool-desc';
+        desc.textContent = tool.description;
+        card.appendChild(desc);
+      }
+
+      if (Array.isArray(tool.tags) && tool.tags.length) {
+        const tags = document.createElement('div');
+        tags.className = 'tool-tags';
+        tool.tags.forEach(function (tagItem) {
+          const tag = document.createElement('span');
+          tag.className = 'tool-tag';
+          tag.textContent = tagItem;
+          tags.appendChild(tag);
+        });
+        card.appendChild(tags);
+      }
+
+      if (tool.notes) {
+        const notes = document.createElement('p');
+        notes.className = 'tool-notes';
+        notes.textContent = tool.notes;
+        card.appendChild(notes);
+      }
+
+      const launchBtn = document.createElement('button');
+      launchBtn.className = 'tool-launch-btn';
+      launchBtn.type = 'button';
+      launchBtn.textContent = '打开';
+      if (tool.url) {
+        launchBtn.dataset.url = tool.url;
+        launchBtn.addEventListener('click', function () {
+          const link = this.dataset.url;
+          if (!link) return;
+          window.open(link, '_blank', 'noopener');
+        });
+      } else {
+        launchBtn.disabled = true;
+        launchBtn.textContent = '未配置链接';
+        launchBtn.style.opacity = '0.5';
+        launchBtn.style.cursor = 'not-allowed';
+      }
+
+      card.appendChild(launchBtn);
+      grid.appendChild(card);
     });
-    initStyleEmbeds(styleEmbedData);
+  }
 
-    function initPromptFramework(data) {
-        const categoryListEl = document.getElementById('prompt-category-list');
-        const titleEl = document.getElementById('prompt-category-title');
-        const descEl = document.getElementById('prompt-category-desc');
-        const highlightsEl = document.getElementById('prompt-category-highlights');
-        const modulesEl = document.getElementById('prompt-module-list');
-        const layoutBadgeEl = document.getElementById('prompt-category-layout');
-        const collectionListEl = document.getElementById('prompt-collection-list');
+  // Helper function to extract design-system prompt from markdown
+  function extractPromptFromMarkdown(markdown) {
+    // Priority 1: Extract content between <design-system> tags
+    const designSystemMatch = markdown.match(/<design-system>([\s\S]*?)<\/design-system>/i);
+    if (designSystemMatch && designSystemMatch[1]) {
+      return designSystemMatch[1].trim();
+    }
 
-        if (!categoryListEl || !titleEl || !descEl) return;
+    // Priority 2: Extract content from ## 设计系统提示词 section onwards
+    const headerMatch = markdown.match(/## 设计系统提示词[\s\S]*([\s\S]*)/i);
+    if (headerMatch && headerMatch[0]) {
+      return headerMatch[0].trim();
+    }
 
-        const categories = Array.isArray(data?.categories) ? data.categories : [];
-        const collections = Array.isArray(data?.collections) ? data.collections : [];
-        const layoutLabels = {
-            'hero-centered': '居中主视觉',
-            'stacked': '分层堆叠',
-            'swatches': '色卡展示',
-            'cards': '卡片叠层',
-            'modules': '模块化',
-            'type-mix': '混合排版',
-            'timeline': '叙事轴',
-            'overlay': '叠色覆盖'
-        };
-        let activeCategoryId = categories.length ? categories[0].id : null;
+    // Priority 3: Extract everything from <role> tag onwards (full prompt including role)
+    const roleMatch = markdown.match(/<role>[\s\S]*/i);
+    if (roleMatch && roleMatch[0]) {
+      return roleMatch[0].trim();
+    }
 
-        const renderPlaceholder = function(targetEl, text) {
-            targetEl.innerHTML = '';
-            const placeholder = document.createElement('div');
-            placeholder.className = 'framework-placeholder';
-            placeholder.textContent = text;
-            targetEl.appendChild(placeholder);
-        };
+    // Fallback: Return null if nothing found
+    return null;
+  }
 
-        const selectCategory = function(categoryId) {
-            const category = categories.find(function(cat) { return cat.id === categoryId; });
-            if (!category) {
-                titleEl.textContent = '暂无分类';
-                descEl.textContent = '请先添加分类数据。';
-                layoutBadgeEl.textContent = '--';
-                renderPlaceholder(highlightsEl, '等待分类信息');
-                renderPlaceholder(modulesEl, '等待模块数据');
-                return;
-            }
+  function initStyleEmbeds(styles) {
+    const grid = document.getElementById('style-embed-grid');
+    if (!grid) return;
 
-            activeCategoryId = categoryId;
-            titleEl.textContent = category.name;
-            descEl.textContent = category.description || '该分类暂无描述。';
-            layoutBadgeEl.textContent = layoutLabels[category.layout] || '模块';
+    grid.innerHTML = '';
 
-            // 更新激活态
-            const buttons = categoryListEl.querySelectorAll('.framework-category');
-            buttons.forEach(function(btn) {
-                if (btn.dataset.category === categoryId) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
+    if (!Array.isArray(styles) || !styles.length) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'framework-placeholder';
+      placeholder.textContent = '等待添加外部风格链接';
+      grid.appendChild(placeholder);
+      return;
+    }
 
-            highlightsEl.innerHTML = '';
-            if (Array.isArray(category.highlights) && category.highlights.length) {
-                category.highlights.forEach(function(item) {
-                    const chip = document.createElement('span');
-                    chip.className = 'highlight-chip';
-                    chip.textContent = item;
-                    highlightsEl.appendChild(chip);
-                });
-            } else {
-                renderPlaceholder(highlightsEl, '暂无高亮信息');
-            }
+    styles.forEach(function (style, index) {
+      const card = document.createElement('article');
+      card.className = 'style-embed-card';
 
-            modulesEl.innerHTML = '';
-            if (Array.isArray(category.modules) && category.modules.length) {
-                category.modules.forEach(function(module) {
-                    const card = document.createElement('article');
-                    card.className = 'module-card';
-                    const title = document.createElement('h4');
-                    title.textContent = module.title || '未命名模块';
-                    card.appendChild(title);
+      const frame = document.createElement('div');
+      frame.className = 'style-embed-frame';
 
-                    if (Array.isArray(module.items) && module.items.length) {
-                        const list = document.createElement('ul');
-                        module.items.forEach(function(item) {
-                            const li = document.createElement('li');
-                            li.textContent = item;
-                            list.appendChild(li);
-                        });
-                        card.appendChild(list);
-                    } else {
-                        const empty = document.createElement('p');
-                        empty.className = 'panel-description';
-                        empty.textContent = '暂无详细条目';
-                        card.appendChild(empty);
-                    }
+      const iframe = document.createElement('iframe');
+      iframe.loading = 'lazy';
+      iframe.title = `${style.name} 风格预览`;
+      iframe.src = style.url;
+      iframe.setAttribute('aria-hidden', 'true');
+      iframe.tabIndex = -1;
+      const scale = typeof style.scale === 'number' ? style.scale : 0.16;
+      const viewportWidth = style.viewportWidth || 1440;
+      const viewportHeight = style.viewportHeight || 1024;
+      iframe.style.width = `${viewportWidth}px`;
+      iframe.style.height = `${viewportHeight}px`;
+      iframe.style.transform = `scale(${scale})`;
+      frame.appendChild(iframe);
 
-                    modulesEl.appendChild(card);
-                });
-            } else {
-                renderPlaceholder(modulesEl, '该分类暂未设置模块');
-            }
-        };
+      card.appendChild(frame);
 
-        const renderCategoryList = function() {
-            categoryListEl.innerHTML = '';
-            if (!categories.length) {
-                renderPlaceholder(categoryListEl, '等待分类数据');
-                return;
-            }
+      const meta = document.createElement('div');
+      meta.className = 'style-embed-meta';
 
-            categories.forEach(function(category) {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'framework-category';
-                button.dataset.category = category.id;
+      const info = document.createElement('div');
+      const title = document.createElement('h4');
+      title.className = 'style-embed-title';
+      title.textContent = style.name || '未命名风格';
+      info.appendChild(title);
 
-                const title = document.createElement('h4');
-                title.textContent = category.name;
-                button.appendChild(title);
+      const themeText = document.createElement('p');
+      themeText.className = 'style-theme-label';
+      themeText.textContent = style.themeLabel || (style.theme === 'dark' ? 'Dark UI' : 'Light UI');
+      info.appendChild(themeText);
 
-                const desc = document.createElement('p');
-                if (Array.isArray(category.highlights) && category.highlights.length) {
-                    desc.textContent = category.highlights.slice(0, 2).join(' · ');
-                } else {
-                    desc.textContent = category.description || '暂无描述';
-                }
-                button.appendChild(desc);
+      meta.appendChild(info);
 
-                button.addEventListener('click', function() {
-                    selectCategory(category.id);
-                });
+      // Copy button for design system prompt
+      const copyBtn = document.createElement('button');
+      copyBtn.type = 'button';
+      copyBtn.className = 'style-copy-btn';
+      copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>Copy</span>';
+      copyBtn.title = 'Copy design system prompt';
+      copyBtn.dataset.slug = style.slug;
 
-                categoryListEl.appendChild(button);
-            });
-        };
+      copyBtn.addEventListener('click', async function (e) {
+        e.stopPropagation(); // Prevent card click
+        const btn = this;
+        const slug = btn.dataset.slug;
+        const originalHTML = btn.innerHTML;
 
-        const renderCollections = function() {
-            if (!collectionListEl) return;
-            collectionListEl.innerHTML = '';
+        try {
+          btn.disabled = true;
+          btn.innerHTML = '<span>Loading...</span>';
 
-            if (!collections.length) {
-                renderPlaceholder(collectionListEl, '尚未创建套件');
-                return;
-            }
+          // Fetch the markdown file
+          const response = await fetch(`styles/${slug}.md`);
+          if (!response.ok) {
+            throw new Error(`文件不存在: styles/${slug}.md`);
+          }
 
-            collections.forEach(function(collection) {
-                const card = document.createElement('article');
-                card.className = 'collection-card';
+          const markdown = await response.text();
 
-                const header = document.createElement('header');
-                const title = document.createElement('h4');
-                title.textContent = collection.title;
-                header.appendChild(title);
+          // Extract design-system content
+          const prompt = extractPromptFromMarkdown(markdown);
 
-                if (collection.summary) {
-                    const summary = document.createElement('p');
-                    summary.textContent = collection.summary;
-                    header.appendChild(summary);
-                }
+          if (!prompt) {
+            throw new Error('未找到设计系统提示词');
+          }
 
-                card.appendChild(header);
+          // Copy to clipboard
+          await navigator.clipboard.writeText(prompt);
 
-                if (Array.isArray(collection.categoryRefs) && collection.categoryRefs.length) {
-                    const tags = document.createElement('div');
-                    tags.className = 'collection-tags';
-                    collection.categoryRefs.forEach(function(ref) {
-                        const category = categories.find(function(cat) { return cat.id === ref; });
-                        const tag = document.createElement('span');
-                        tag.className = 'collection-tag';
-                        tag.textContent = category ? category.name : ref;
-                        tags.appendChild(tag);
-                    });
-                    card.appendChild(tags);
-                }
+          // Success feedback
+          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Copied</span>';
+          btn.classList.add('copied');
 
-                if (Array.isArray(collection.pillars) && collection.pillars.length) {
-                    const pillarsWrap = document.createElement('div');
-                    pillarsWrap.className = 'collection-pillars';
-                    collection.pillars.forEach(function(pillar) {
-                        const pillarCard = document.createElement('div');
-                        pillarCard.className = 'pillar';
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+            btn.disabled = false;
+          }, 2000);
 
-                        const label = document.createElement('p');
-                        label.className = 'pillar-label';
-                        label.textContent = pillar.label || 'Pillar';
-                        pillarCard.appendChild(label);
+        } catch (err) {
+          console.error('复制失败:', err);
+          btn.innerHTML = '<span>Failed</span>';
+          btn.classList.add('error');
 
-                        if (Array.isArray(pillar.items) && pillar.items.length) {
-                            const list = document.createElement('ul');
-                            pillar.items.forEach(function(item) {
-                                const li = document.createElement('li');
-                                li.textContent = item;
-                                list.appendChild(li);
-                            });
-                            pillarCard.appendChild(list);
-                        }
-
-                        pillarsWrap.appendChild(pillarCard);
-                    });
-                    card.appendChild(pillarsWrap);
-                }
-
-                if (Array.isArray(collection.prompt) && collection.prompt.length) {
-                    const snippet = document.createElement('div');
-                    snippet.className = 'prompt-snippet';
-                    const list = document.createElement('ul');
-                    collection.prompt.forEach(function(line) {
-                        const li = document.createElement('li');
-                        li.textContent = line;
-                        list.appendChild(li);
-                    });
-                    snippet.appendChild(list);
-                    card.appendChild(snippet);
-                }
-
-                collectionListEl.appendChild(card);
-            });
-        };
-
-        renderCategoryList();
-        if (activeCategoryId) {
-            selectCategory(activeCategoryId);
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('error');
+            btn.disabled = false;
+          }, 2000);
         }
-        renderCollections();
-    }
+      });
 
-    function initToolShortcuts(data) {
-        const grid = document.getElementById('quick-launch-grid');
-        const updatedEl = document.getElementById('tool-meta-updated');
-        const countEl = document.getElementById('tool-meta-count');
+      meta.appendChild(copyBtn);
 
-        if (!grid || !updatedEl || !countEl) return;
+      card.appendChild(meta);
 
-        const tools = Array.isArray(data?.tools) ? data.tools : [];
-        updatedEl.textContent = data?.updated || '--';
-        countEl.textContent = tools.length || 0;
+      grid.appendChild(card);
 
-        grid.innerHTML = '';
-        if (!tools.length) {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'framework-placeholder';
-            placeholder.textContent = '尚未配置快捷软件';
-            grid.appendChild(placeholder);
-            return;
-        }
+      card.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', function () {
+        this.style.transform = 'translateY(0)';
+      });
 
-        tools.forEach(function(tool) {
-            const card = document.createElement('article');
-            card.className = 'tool-card';
+      // Click card to open website
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // Prevent default if clicking on links/buttons inside (though we removed them)
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        window.open(style.url, '_blank', 'noopener');
+      });
 
-            const header = document.createElement('header');
-            const name = document.createElement('h4');
-            name.className = 'tool-name';
-            name.textContent = tool.name || '未命名工具';
-            header.appendChild(name);
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      const groupIndex = Math.floor(index / 4);
+      const delay = groupIndex * 0.1;
+      card.style.transition = `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`;
+      observer.observe(card);
+    });
+  }
 
-            if (tool.shortcut) {
-                const shortcut = document.createElement('span');
-                shortcut.className = 'tool-shortcut';
-                shortcut.textContent = tool.shortcut;
-                header.appendChild(shortcut);
-            }
+  // Initialize Mouse-tracking Spotlight
+  function initSpotlight(selector) {
+    const cards = document.querySelectorAll(selector);
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-            card.appendChild(header);
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  }
 
-            if (tool.description) {
-                const desc = document.createElement('p');
-                desc.className = 'tool-desc';
-                desc.textContent = tool.description;
-                card.appendChild(desc);
-            }
-
-            if (Array.isArray(tool.tags) && tool.tags.length) {
-                const tags = document.createElement('div');
-                tags.className = 'tool-tags';
-                tool.tags.forEach(function(tagItem) {
-                    const tag = document.createElement('span');
-                    tag.className = 'tool-tag';
-                    tag.textContent = tagItem;
-                    tags.appendChild(tag);
-                });
-                card.appendChild(tags);
-            }
-
-            if (tool.notes) {
-                const notes = document.createElement('p');
-                notes.className = 'tool-notes';
-                notes.textContent = tool.notes;
-                card.appendChild(notes);
-            }
-
-            const launchBtn = document.createElement('button');
-            launchBtn.className = 'tool-launch-btn';
-            launchBtn.type = 'button';
-            launchBtn.textContent = '打开';
-            if (tool.url) {
-                launchBtn.dataset.url = tool.url;
-                launchBtn.addEventListener('click', function() {
-                    const link = this.dataset.url;
-                    if (!link) return;
-                    window.open(link, '_blank', 'noopener');
-                });
-            } else {
-                launchBtn.disabled = true;
-                launchBtn.textContent = '未配置链接';
-                launchBtn.style.opacity = '0.5';
-                launchBtn.style.cursor = 'not-allowed';
-            }
-
-            card.appendChild(launchBtn);
-            grid.appendChild(card);
-        });
-    }
-
-    function initStyleEmbeds(styles) {
-        const grid = document.getElementById('style-embed-grid');
-        if (!grid) return;
-
-        grid.innerHTML = '';
-
-        if (!Array.isArray(styles) || !styles.length) {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'framework-placeholder';
-            placeholder.textContent = '等待添加外部风格链接';
-            grid.appendChild(placeholder);
-            return;
-        }
-
-        styles.forEach(function(style, index) {
-            const card = document.createElement('article');
-            card.className = 'style-embed-card';
-
-            const frame = document.createElement('div');
-            frame.className = 'style-embed-frame';
-
-            const iframe = document.createElement('iframe');
-            iframe.loading = 'lazy';
-            iframe.title = `${style.name} 风格预览`;
-            iframe.src = style.url;
-            iframe.setAttribute('aria-hidden', 'true');
-            iframe.tabIndex = -1;
-            const scale = typeof style.scale === 'number' ? style.scale : 0.16;
-            const viewportWidth = style.viewportWidth || 1440;
-            const viewportHeight = style.viewportHeight || 1024;
-            iframe.style.width = `${viewportWidth}px`;
-            iframe.style.height = `${viewportHeight}px`;
-            iframe.style.transform = `scale(${scale})`;
-            frame.appendChild(iframe);
-
-            card.appendChild(frame);
-
-            const meta = document.createElement('div');
-            meta.className = 'style-embed-meta';
-
-            const info = document.createElement('div');
-            const title = document.createElement('h4');
-            title.className = 'style-embed-title';
-            title.textContent = style.name || '未命名风格';
-            info.appendChild(title);
-
-            const themeText = document.createElement('p');
-            themeText.className = 'style-theme-label';
-            themeText.textContent = style.themeLabel || (style.theme === 'dark' ? 'Dark UI' : 'Light UI');
-            info.appendChild(themeText);
-
-            meta.appendChild(info);
-
-            // Removed actions (open button) as per request
-
-            card.appendChild(meta);
-
-            grid.appendChild(card);
-
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-            
-            // Click card to open website
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', (e) => {
-                // Prevent default if clicking on links/buttons inside (though we removed them)
-                if (e.target.closest('a') || e.target.closest('button')) return;
-                window.open(style.url, '_blank', 'noopener');
-            });
-
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            const groupIndex = Math.floor(index / 4);
-            const delay = groupIndex * 0.1;
-            card.style.transition = `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`;
-            observer.observe(card);
-        });
-    }
-
-    // Initialize Mouse-tracking Spotlight
-    function initSpotlight(selector) {
-        const cards = document.querySelectorAll(selector);
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    }
-
-    // Apply to all card-like elements
-    setTimeout(() => {
-        initSpotlight('.principle-card, .constraint-card, .application-item, .framework-panel, .style-embed-card, .tool-card, .card-base, .collection-card');
-    }, 500); // Delay slightly to ensure elements are rendered
+  // Apply to all card-like elements
+  setTimeout(() => {
+    initSpotlight('.principle-card, .constraint-card, .application-item, .framework-panel, .style-embed-card, .tool-card, .card-base, .collection-card');
+  }, 500); // Delay slightly to ensure elements are rendered
 
 });
